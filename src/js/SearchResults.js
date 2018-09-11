@@ -5,38 +5,47 @@ class SearchResults extends React.Component {
     constructor(props){
         super(props)
         this.state = {
-            a: []
+            response: []
         }
     }
-    loadDoc() {
+
+    componentDidMount() {
         var xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) {
+        var self = this;
+
+        xhttp.onreadystatechange = function(e){
+            console.log(this);
+            if (xhttp.readyState === 4 && xhttp.status === 200){
                 console.log(this.responseText);
                 let response = JSON.parse(this.responseText)
-                this.setState({
-                    a : response
+                let thumbnail = response.thumbnail
+                // console.log(thumbnail)
+                // thumbnail.forEach(function(element) {
+                //     self.setState({
+                //         response: self.state.response.concat([thumbnail])
+                //     })
+                // });
+
+                self.setState({
+                    response: response
                 })
-                // const unti = a.map((a) =>
-                //     <li>{a.thumbnail}</li>
-                // );
-                // console.log(a[0].thumbnail);
+
+                // self.setState({
+                //     reponse : this.response
+                // })
             }
-        };
-        let vocab = this.props.vocab;
-        let keyword = this.props.keyword;
-        // 逆にしてる
+        }
+            let vocab = this.props.vocab;
+            let keyword = this.props.keyword;
         xhttp.open("GET", "https://rakutenmafia.azurewebsites.net/api/search?q=" + keyword + "&k=" + vocab, true);
         xhttp.send();
-
     }
 
     render() {
-        const a = this.state.a;
         return (
 
             <div className={"searchresults"}>
-                {this.loadDoc()}
+                {this.state.reponse}
                 <div className="header">
                     <h1 className="text-center">Find Words On Youtube!</h1>
                     <p className="text-center">ユーチューブでたんごをさがそう!</p>
