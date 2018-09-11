@@ -8,12 +8,24 @@ class App extends React.Component{
     constructor(props){
         super(props)
         this.state = {
-            currentPage : 'Search'
+            currentPage : 'Search',
+            vocab : '',
+            keyword : ''
         }
         this.changePage = this.changePage.bind(this)
+        this.changeVocab = this.changeVocab.bind(this)
+        this.changeKeyword = this.changeKeyword.bind(this)
     }
     changePage(page) {
         this.setState({currentPage: page})
+    }
+
+    changeVocab(vocab){
+        this.setState({vocab : vocab})
+    }
+
+    changeKeyword(keyword){
+        this.setState({keyword : keyword})
     }
 
     render() {
@@ -21,10 +33,14 @@ class App extends React.Component{
         if(this.state.currentPage === 'Search'){
             page = <Search
                 changePage={this.changePage}
+                changeVocab={this.changeVocab}
+                changeKeyword={this.changeKeyword}
             />
         }else if(this.state.currentPage === 'SearchResults') {
             page = <SearchResults
                 changePage={this.changePage}
+                vocab={this.state.vocab}
+                keyword={this.state.keyword}
             />
         }else if(this.state.currentPage === 'Player') {
             page = <Player
