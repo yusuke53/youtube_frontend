@@ -1,6 +1,16 @@
 import React from 'react';
 import '../css/searchresults.css';
 
+function getThumbnailAll(obj) {
+    var thumbnails = [];
+
+    for(var i=0; i<obj.length; i++){
+        thumbnails[i] = obj[i].thumbnail;
+    }
+
+    return thumbnails;
+}
+
 class SearchResults extends React.Component {
     constructor(props){
         super(props)
@@ -18,7 +28,16 @@ class SearchResults extends React.Component {
             if (xhttp.readyState === 4 && xhttp.status === 200){
                 console.log(this.responseText);
                 let response = JSON.parse(this.responseText)
-                let thumbnail = response.thumbnail
+                console.log(response.length)
+                let thumbnails = getThumbnailAll(response);
+                console.log(thumbnails)
+                    self.setState({
+                        response: thumbnails
+                    })
+                // forEach(function(element){
+                //
+                //
+                // });
                 // console.log(thumbnail)
                 // thumbnail.forEach(function(element) {
                 //     self.setState({
@@ -26,9 +45,9 @@ class SearchResults extends React.Component {
                 //     })
                 // });
 
-                self.setState({
-                    response: response
-                })
+                // self.setState({
+                //     response: response
+                // })
 
                 // self.setState({
                 //     reponse : this.response
@@ -45,7 +64,7 @@ class SearchResults extends React.Component {
         return (
 
             <div className={"searchresults"}>
-                {this.state.reponse}
+                {this.state.response[0]}
                 <div className="header">
                     <h1 className="text-center">Find Words On Youtube!</h1>
                     <p className="text-center">ユーチューブでたんごをさがそう!</p>
@@ -56,7 +75,7 @@ class SearchResults extends React.Component {
                         <div className="col-xs-12">
                             <a onClick={() =>this.props.changePage('Player')} >
                                 <div className="col-xs-3">
-                                    <iframe width="560" height="315" src="https://www.youtube.com/embed/fTwAz1JC4yI"
+                                    <iframe width="560" height="315" src={this.state.response[0]}
                                             frameBorder="0"
                                             allow="autoplay; encrypted-media" allowFullScreen></iframe>
                                 </div>
