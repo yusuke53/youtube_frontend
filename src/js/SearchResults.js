@@ -5,22 +5,21 @@ class SearchResults extends React.Component {
     constructor(props){
         super(props)
         this.state = {
-            a: []
+            hairetu: []
         }
+        this.onChange = this.onChange.bind(this);
     }
     loadDoc() {
         var xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
                 console.log(this.responseText);
-                let response = JSON.parse(this.responseText)
-                this.setState({
-                    a : response
-                })
+                let a = JSON.parse(this.responseText);
                 // const unti = a.map((a) =>
                 //     <li>{a.thumbnail}</li>
                 // );
-                // console.log(a[0].thumbnail);
+                this.onChange(a);
+                console.log(this.state.hairetu);
             }
         };
         let vocab = this.props.vocab;
@@ -29,6 +28,9 @@ class SearchResults extends React.Component {
         xhttp.open("GET", "https://rakutenmafia.azurewebsites.net/api/search?q=" + keyword + "&k=" + vocab, true);
         xhttp.send();
 
+    }
+    onChange(a){
+        this.setState({hairetu : a})
     }
 
     render() {
