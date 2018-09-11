@@ -1,0 +1,29 @@
+.header{
+  margin: 50px 25px 0 0;
+}
+.sample input {
+  display: none;
+}
+.sample label{
+  display: block;
+  float: left;
+  cursor: pointer;
+  width: 31%;
+  height: 100px;
+  margin: 1% 1%;
+  padding: 12px 0;
+  border-right: 1px solid #abb2b7;
+  border-radius: 10px;
+  background: #bdc3c7;
+  color: #555e64;
+  font-size: 14px;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 1;
+  transition: .2s;
+}
+.sample input[type="radio"]:checked + label{
+  border-radius: 10px;
+  background-color: #a1b91d;
+  color: #fff;
+}
