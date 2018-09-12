@@ -1,15 +1,6 @@
 import React from 'react';
 import '../css/player.css';
 
-function getdurationAll(obj) {
-    var durations = [];
-
-    for(var i=0; i<obj.length; i++){
-        durations[i] = obj[i].dur;
-    }
-
-    return durations;
-}
 
 function getstartAll(obj) {
     var starts = [];
