@@ -28,30 +28,13 @@ class SearchResults extends React.Component {
             if (xhttp.readyState === 4 && xhttp.status === 200){
                 console.log(this.responseText);
                 let response = JSON.parse(this.responseText)
-                console.log(response.length)
+                console.log(response)
                 let thumbnails = getThumbnailAll(response);
                 console.log(thumbnails)
+                let a=[["a","w"],["b","z"]]
                     self.setState({
-                        response: thumbnails
+                        response: a
                     })
-                // forEach(function(element){
-                //
-                //
-                // });
-                // console.log(thumbnail)
-                // thumbnail.forEach(function(element) {
-                //     self.setState({
-                //         response: self.state.response.concat([thumbnail])
-                //     })
-                // });
-
-                // self.setState({
-                //     response: response
-                // })
-
-                // self.setState({
-                //     reponse : this.response
-                // })
             }
         }
             let vocab = this.props.vocab;
@@ -62,9 +45,10 @@ class SearchResults extends React.Component {
 
     render() {
         return (
-
             <div className={"searchresults"}>
-                {this.state.response[0]}
+                {this.state.response.map((thumbnail) => {
+                    return <li>{thumbnail[0]} {thumbnail[1]}</li>;
+                })}
                 <div className="header">
                     <h1 className="text-center">Find Words On Youtube!</h1>
                     <p className="text-center">ユーチューブでたんごをさがそう!</p>
