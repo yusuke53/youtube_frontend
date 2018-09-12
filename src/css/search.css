@@ -7,6 +7,16 @@
     position: center;
 }
 
+.text-center{
+    text-shadow: #555e64;
+    letter-spacing: 0.8px;
+    text-shadow: 0 9.36px 6.896px #c4b59d,0 -1px 1px #fff;
+}
+
+.text-center2{
+    font-weight: bold;
+}
+
 .f{
     color: dodgerblue;
 }
