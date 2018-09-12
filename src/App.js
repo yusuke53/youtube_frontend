@@ -10,11 +10,13 @@ class App extends React.Component{
         this.state = {
             currentPage : 'Search',
             vocab : '',
-            keyword : ''
+            keyword : '',
+            videoId : ''
         }
         this.changePage = this.changePage.bind(this)
         this.changeVocab = this.changeVocab.bind(this)
         this.changeKeyword = this.changeKeyword.bind(this)
+        this.changeVideoId = this.changeVideoId.bind(this)
     }
     changePage(page) {
         this.setState({currentPage: page})
@@ -26,6 +28,10 @@ class App extends React.Component{
 
     changeKeyword(keyword){
         this.setState({keyword : keyword})
+    }
+
+    changeVideoId(videoId){
+        this.setState({videoId : videoId})
     }
 
     render() {
@@ -41,10 +47,13 @@ class App extends React.Component{
                 changePage={this.changePage}
                 vocab={this.state.vocab}
                 keyword={this.state.keyword}
+                changeVideoId={this.changeVideoId}
             />
         }else if(this.state.currentPage === 'Player') {
             page = <Player
                 changePage={this.changePage}
+                videoId={this.state.videoId}
+                vocab={this.state.vocab}
             />
         }
         return (
