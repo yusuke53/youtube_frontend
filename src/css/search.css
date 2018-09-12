@@ -1,3 +1,5 @@
+
+
 .header{
   margin: 50px 25px 0 0;
   display: inline-block;
@@ -5,14 +7,49 @@
     position: center;
 }
 
+.f{
+    color: dodgerblue;
+}
+
+.w{
+    color: red;
+}
+
+.o{
+    color: orange;
+}
+
+.y{
+    color: limegreen;
+}
+
 img.ManaTube_left{
     width: 100px;
     margin-right: 20px;
+
 }
 
 img.ManaTube_right{
     width: 100px;
     margin-left: 20px;
+}
+
+img.ManaTube_left:hover{
+    cursor: pointer;
+    animation: hurueru .3s  infinite;
+}
+
+img.ManaTube_right:hover{
+    cursor: pointer;
+    animation: hurueru .3s  infinite;
+}
+
+@keyframes hurueru {
+    0% {transform: translate(0px, 0px) rotateZ(0deg)}
+    25% {transform: translate(2px, 2px) rotateZ(1deg)}
+    50% {transform: translate(0px, 2px) rotateZ(0deg)}
+    75% {transform: translate(2px, 0px) rotateZ(-1deg)}
+    100% {transform: translate(0px, 0px) rotateZ(0deg)}
 }
 
 .text-center{
