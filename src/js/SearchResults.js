@@ -1,6 +1,7 @@
 import React from 'react';
 import '../css/searchresults.css';
 
+
 function getThumbnailAll(obj) {
     var thumbnails = [];
 
@@ -98,6 +99,9 @@ class SearchResults extends React.Component {
     render() {
         return (
             <div className={"searchresults"}>
+
+
+
                 <div className="header">
                     <h1 className="text-center">Find Words On Youtube!</h1>
                     <p className="text-center">ユーチューブでたんごをさがそう!</p>
