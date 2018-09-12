@@ -29,6 +29,15 @@ function getwordHitCountAll(obj){
 
     return wordHitCounts;
 }
+function getvideoIdAll(obj) {
+    var videoIds = [];
+
+    for(var i=0; i<obj.length; i++){
+        videoIds[i] = obj[i].videoId;
+    }
+
+    return videoIds;
+}
 
 
 class SearchResults extends React.Component {
@@ -38,6 +47,7 @@ class SearchResults extends React.Component {
             thumbnails: [],
             titles : [],
             wordHitCounts : [],
+            videoIds : [],
             all : []
         };
     }
@@ -56,18 +66,20 @@ class SearchResults extends React.Component {
                 let thumbnails = getThumbnailAll(response);
                 let titles = getTitleAll(response);
                 let wordHitCounts = getwordHitCountAll(response);
+                let videoIds = getvideoIdAll(response)
                 // console.log(thumbnails);
                 // console.log(titles);
                 // console.log(wordHitCounts);
                 let all = []
                 for(var i=0; i<thumbnails.length; i++){
-                    all.push([thumbnails[i], titles[i], wordHitCounts[i]])
+                    all.push([thumbnails[i], titles[i], wordHitCounts[i], videoIds[i]])
                 }
                 console.log(all)
                 self.setState({
                     thumbnails: thumbnails,
                     titles : titles,
                     wordHitCounts : wordHitCounts,
+                    videoIds : videoIds,
                     all : all
                 })
             }
@@ -91,7 +103,7 @@ class SearchResults extends React.Component {
                         return (
                         <div className="row">
                             <div className="col-xs-12">
-                                {/*<a onClick={() => this.props.changePage('Player')}>*/}
+                                <a onClick={() => this.props.changePage('Player')}>
                                     <div className="col-xs-3">
                                         <iframe width="560" height="315" src={all[0]}
                                                 frameBorder="0"
@@ -101,7 +113,7 @@ class SearchResults extends React.Component {
                                         <h3>{all[1]}</h3>
                                         <h3>含んでるワードの数：{all[2]}</h3>
                                     </div>
-                                {/*</a>*/}
+                                </a>
                             </div>
                         </div>
                         )

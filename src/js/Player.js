@@ -2,6 +2,41 @@ import React from 'react';
 import '../css/player.css';
 
 class Player extends React.Component{
+    componentDidMount() {
+        var xhttp = new XMLHttpRequest();
+        var self = this;
+
+        xhttp.onreadystatechange = function(e){
+            console.log(this);
+            if (xhttp.readyState === 4 && xhttp.status === 200){
+                console.log(this.responseText);
+
+                let response = JSON.parse(this.responseText);
+                console.log(response.length);
+                let thumbnails = getThumbnailAll(response);
+                let titles = getTitleAll(response);
+                let wordHitCounts = getwordHitCountAll(response);
+                // console.log(thumbnails);
+                // console.log(titles);
+                // console.log(wordHitCounts);
+                let all = []
+                for(var i=0; i<thumbnails.length; i++){
+                    all.push([thumbnails[i], titles[i], wordHitCounts[i]])
+                }
+                console.log(all)
+                self.setState({
+                    thumbnails: thumbnails,
+                    titles : titles,
+                    wordHitCounts : wordHitCounts,
+                    all : all
+                })
+            }
+        }
+        let vocab = this.props.vocab;
+        let keyword = this.props.keyword;
+        xhttp.open("GET", "https://rakutenmafia.azurewebsites.net/api/search?q=" + keyword + "&k=" + vocab, true);
+        xhttp.send();
+    }
     render(){
         return(
             <div className={"player"}>
