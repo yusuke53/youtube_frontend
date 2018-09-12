@@ -1,5 +1,6 @@
 import React from 'react';
 import '../css/player.css';
+import Example from '../js/Example';
 
 function getdurationAll(obj) {
     var durations = [];
@@ -36,11 +37,26 @@ class Player extends React.Component{
         super(props)
         this.state = {
             starts: [],
-            text: [],
-            dur: [],
+            texts: [],
+            durations: [],
             all: [],
+            start :'',
+            duration : ''
+
         };
     }
+    onClickLoadVideo(a) {
+        this.setState({start: a[0]});
+        this.setState({duration: a[2]});
+        if (this.player) this.player.loadVideoById({
+            'videoId': this.props.videoId,
+            'startSeconds': a[0],
+            'endSeconds': a[0]+a[2],
+            'suggestedQuality': 'default'
+        });
+        console.log();
+    }
+
     componentDidMount() {
         var xhttp = new XMLHttpRequest();
         var self = this;
@@ -52,14 +68,17 @@ class Player extends React.Component{
                 console.log(response);
                 let starts = getstartAll(response);
                 let texts = gettextAll(response);
+                let durations = getdurationAll(response);
+                console.log(durations)
                 let all = [];
                 for(var i=0; i<starts.length; i++){
-                    all.push([starts[i], texts[i]])
+                    all.push([starts[i], texts[i], durations[i]])
                 }
                 console.log(all);
                 self.setState({
                     starts: starts,
                     texts : texts,
+                    durations : durations,
                     all : all
                 })
             }
@@ -69,52 +88,6 @@ class Player extends React.Component{
         xhttp.open("GET", "https://rakutenmafia.azurewebsites.net/api/subtitle/matches?v=" + videoId + "&k="  + vocab, true);
         xhttp.send();
     }
-//     iframeapi() {
-//         // 2. This code loads the IFrame Player API code asynchronously.
-//         var tag = document.createElement('script');
-//
-//         tag.src = "https://www.youtube.com/iframe_api";
-//         var firstScriptTag = document.getElementsByTagName('script')[0];
-//         firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-//
-// // 3. This function creates an <iframe> (and YouTube player)
-// //    after the API code downloads.
-//         if (typeof videoId === 'undefined') var videoId = 'FlsCjmMhFmw'; //youtube rewind inseted if no videoId found
-//         var player;
-//
-//         function onYouTubeIframeAPIReady() {
-//             player = new YT.Player('player', {
-//                 height: '390',
-//                 width: '640',
-//                 videoId: videoId,
-//                 events: {
-//                     'onReady': onPlayerReady
-//                 }
-//             });
-//         }
-//
-// // params for new YT.Player()
-// //    playerVars: {
-// //        start: 25,
-// //        end: 30
-// //    },
-//
-// // 4. The API will call this function when the video player is ready.
-//         function onPlayerReady(event) {
-//             event.target.playVideo();
-//         }
-//
-// //trying to load and play video
-//         function onClickLoadVideo(startTime, duration) {
-//             console.log("onClickLoadVideo called");
-//             player.loadVideoById({
-//                 'videoId': videoId,
-//                 'startSeconds': start,
-//                 'endSeconds': startTime + duration,
-//                 'suggestedQuality': 'default'
-//             });
-//         }
-//     }
 
     render(){
         return(
@@ -129,10 +102,12 @@ class Player extends React.Component{
                     {this.state.all.map((all) => {
                         return (
                             <div>
-                                <ul>
-                                    <li>start:{all[0]}</li>
-                                    <li>text:{all[1]}</li>
-                                </ul>
+                                <a onClick={()=>this.onClickLoadVideo(all)}>
+                                    <ul>
+                                        <li>start:{all[0]}</li>
+                                        <li>text:{all[1]}</li>
+                                    </ul>
+                                </a>
                             </div>
                         )
                     })}
@@ -144,21 +119,12 @@ class Player extends React.Component{
                     </button>
                 </aside>
                 <div className="main col-xs-8">
-                    <div id="player"></div>
+                    <Example
+                        videoId={this.props.videoId}
+                        start={this.state.start}
+                        duration={this.state.duration}
+                    />
                 </div>
-                {/*<script>var videoId = '[[${video.videoId}]]';</script>*/}
-                {/*<script th:src="youtubeHandler.js"></script>*/}
-
-                {/*<h2>[[${video.title}]]</h2>*/}
-                {/*<h3>List of texts that have: <b>[[${keyword}]]</b></h3>*/}
-                {/*<div th:each="data:${subtitleData}" className="col-xs-12">*/}
-                {/*<a style="text-decoration: none;" href="#"*/}
-                {/*th:onclick="'onClickLoadVideo(' + ${data.start} + ',' + ' ' + ')'">*/}
-                {/*<div className="alert alert-info">*/}
-                {/*[[${data.text}]]*/}
-                {/*</div>*/}
-                {/*</a>*/}
-                {/*</div>*/}
             </div>
         )
     }
