@@ -48,10 +48,11 @@ class Search extends React.Component{
     render(){
         return(
             <div className={"search"}>
-                <div className="header">
-                    <img src="">
+                <div className="header col-xs-12">
+                    <img src="pictures/ManaTube.png" className={"ManaTube_left"}/>
                     <h1 className="text-center">Find Words On Youtube!</h1>
-                    <p className="text-center">ユーチューブでたんごをさがそう!</p>
+                    <img src="pictures/ManaTube.png" className={"ManaTube_right"}/>
+                    <p className="text-center2">Let's find your words☺</p>
                 </div>
                 <div className="contents col-xs-offset-1 col-xs-10">
                     <div className="col-xs-12">
