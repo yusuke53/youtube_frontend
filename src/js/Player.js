@@ -2,6 +2,15 @@ import React from 'react';
 import '../css/player.css';
 import Example from '../js/Example';
 
+function getdurationAll(obj) {
+    var durations = [];
+
+    for(var i=0; i<obj.length; i++){
+        durations[i] = obj[i].dur;
+    }
+
+    return durations;
+}
 
 function getstartAll(obj) {
     var starts = [];
@@ -45,7 +54,7 @@ class Player extends React.Component{
             'endSeconds': a[0]+a[2],
             'suggestedQuality': 'default'
         });
-        console.log();
+        console.log('endSeconds');
     }
 
     componentDidMount() {
