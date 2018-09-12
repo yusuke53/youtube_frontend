@@ -3,23 +3,36 @@ import YouTube from 'react-youtube';
 
 
 class Example extends React.Component {
-    onStateChange = (event) => {
-        // do something with the state change event
-    };
+    constructor(props) {
+        super(props);
+        this.state={
+            player: null
+        }
+        this.onReady = this.onReady.bind(this);
+        this.onChangeVideo = this.onChangeVideo.bind(this);
+        this.onPlayVideo = this.onPlayVideo.bind(this);
+        this.onPauseVideo = this.onPauseVideo.bind(this);
+    }
 
-    onReady = (event) => {
-        // your player is now ready
+    onReady(event) {
+        console.log(`YouTube Player object for videoId: "${this.state.videoId}" has been saved to state.`); // eslint-disable-line
+        this.setState({player: event.target,});
+    }
+    onPlayVideo() {
+        this.state.player.playVideo();
+    }
+    onPauseVideo() {
+        this.state.player.pauseVideo();
+    }
+    onChangeVideo() {
+        this.setState({
+            videoId: this.props.videoId === "LS9AIOuqFL8" ? "dGt8WpOoKR4" : "da1MH2HFVL0",
+        });
+    }
+    onClick = (event) => {
+        // interact with your player using javascript methods
+        if (this.player) this.player.loadVideoById('Zi_XLOBDo_Y');
     };
-
-    onPlayer = (player) => {
-        // save your player reference for later
-        this.player = player;
-    };
-
-    // onClick = (event) => {
-    //     // interact with your player using javascript methods
-    //     if (this.player) this.player.loadVideoById('Zi_XLOBDo_Y');
-    // };
     render() {
         const opts = {
             height: '390',
@@ -30,13 +43,16 @@ class Example extends React.Component {
         };
 
         return (
-            <YouTube
-                videoId={this.props.videoId}
-                opts={opts}
-                onStateChange={this.onStateChange}
-                onReady={this.onReady}
-                onPlayer={this.onPlayer}
-            />
+            <div className={"example"}>
+                <YouTube
+                    videoId={this.props.videoId}
+                    onReady={this.onReady}
+                    opts={opts}
+                />
+                <button onClick={this.onPlayVideo}>Play</button>
+                <button onClick={this.onPauseVideo}>Pause</button>
+                <button onClick={this.onChangeVideo}>Change Video</button>
+            </div>
         );
     }
 
