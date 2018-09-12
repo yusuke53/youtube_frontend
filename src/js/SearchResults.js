@@ -81,35 +81,31 @@ class SearchResults extends React.Component {
     render() {
         return (
             <div className={"searchresults"}>
-                {this.state.all.map((all) => {
-                    return <iframe width="560" height="315" src={all[0]} frameBorder="0" allow="autoplay; encrypted-media" allowFullScreen></iframe>
-                    {/*<li>{all[0]} {all[1]} {all[2]}</li>;*/}
-                })}
-
                 <div className="header">
                     <h1 className="text-center">Find Words On Youtube!</h1>
                     <p className="text-center">ユーチューブでたんごをさがそう!</p>
                     <p className="text-center"><a href="/" className="btn btn-success">Home ほーむ</a></p>
                 </div>
                 <div className="main">
-                    {/*{this.state.all.map((all) => {*/}
-                        {/*return*/}
-                        {/*<div className="row">*/}
-                            {/*<div className="col-xs-12">*/}
-                                {/*/!*<a onClick={() => this.props.changePage('Player')}>*!/*/}
-                                    {/*<div className="col-xs-3">*/}
-                                        {/*<iframe width="560" height="315" src={all[0]}*/}
-                                                {/*frameBorder="0"*/}
-                                                {/*allow="autoplay; encrypted-media" allowFullScreen></iframe>*/}
-                                    {/*</div>*/}
-                                    {/*<div className="col-xs-9">*/}
-                                        {/*<h3>{all[1]}</h3>*/}
-                                        {/*<h3>含んでるワードの数：{all[2]}</h3>*/}
-                                    {/*</div>*/}
-                                {/*/!*</a>*!/*/}
-                            {/*</div>*/}
-                        {/*</div>*/}
-                    {/*})}*/}
+                    {this.state.all.map((all) => {
+                        return (
+                        <div className="row">
+                            <div className="col-xs-12">
+                                {/*<a onClick={() => this.props.changePage('Player')}>*/}
+                                    <div className="col-xs-3">
+                                        <iframe width="560" height="315" src={all[0]}
+                                                frameBorder="0"
+                                                allow="autoplay; encrypted-media" allowFullScreen></iframe>
+                                    </div>
+                                    <div className="col-xs-9">
+                                        <h3>{all[1]}</h3>
+                                        <h3>含んでるワードの数：{all[2]}</h3>
+                                    </div>
+                                {/*</a>*/}
+                            </div>
+                        </div>
+                        )
+                    })}
                 </div>
                 {this.state.a}
                 <button className="SearchResults" onClick = {() => this.props.changePage('SearchResults')}>
