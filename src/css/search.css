@@ -1,6 +1,35 @@
 .header{
   margin: 50px 25px 0 0;
+  display: inline-block;
+    text-align: center;
+    position: center;
 }
+
+img.ManaTube_left{
+    width: 100px;
+    margin-right: 20px;
+}
+
+img.ManaTube_right{
+    width: 100px;
+    margin-left: 20px;
+}
+
+.text-center{
+    display: inline-block;
+    text-align: center;
+    font-family: fantasy;
+}
+
+.text-center2{
+    display: block;
+    text-align: center;
+    vertical-align: 100px;
+    position: relative;
+    top: -30px;
+}
+
+
 .sample input {
   display: none;
 }
