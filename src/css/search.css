@@ -1,6 +1,72 @@
+
+
 .header{
   margin: 50px 25px 0 0;
+  display: inline-block;
+    text-align: center;
+    position: center;
 }
+
+.f{
+    color: dodgerblue;
+}
+
+.w{
+    color: red;
+}
+
+.o{
+    color: orange;
+}
+
+.y{
+    color: limegreen;
+}
+
+img.ManaTube_left{
+    width: 100px;
+    margin-right: 20px;
+
+}
+
+img.ManaTube_right{
+    width: 100px;
+    margin-left: 20px;
+}
+
+img.ManaTube_left:hover{
+    cursor: pointer;
+    animation: hurueru .3s  infinite;
+}
+
+img.ManaTube_right:hover{
+    cursor: pointer;
+    animation: hurueru .3s  infinite;
+}
+
+@keyframes hurueru {
+    0% {transform: translate(0px, 0px) rotateZ(0deg)}
+    25% {transform: translate(2px, 2px) rotateZ(1deg)}
+    50% {transform: translate(0px, 2px) rotateZ(0deg)}
+    75% {transform: translate(2px, 0px) rotateZ(-1deg)}
+    100% {transform: translate(0px, 0px) rotateZ(0deg)}
+}
+
+.text-center{
+    display: inline-block;
+    text-align: center;
+    font-family: fantasy;
+}
+
+.text-center2{
+    display: block;
+    text-align: center;
+    vertical-align: 100px;
+    position: relative;
+    top: -30px;
+}
+
+
 .sample input {
   display: none;
 }
@@ -26,4 +92,10 @@
   border-radius: 10px;
   background-color: #a1b91d;
   color: #fff;
+}
+
+.searchbutton{
+  text-align: center;
+  color: red;
+  display: none;
 }
