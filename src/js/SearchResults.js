@@ -90,6 +90,11 @@ class SearchResults extends React.Component {
         xhttp.send();
     }
 
+    sendVideoId(videoId){
+        this.props.changeVideoId(videoId)
+        this.props.changePage('Player')
+    }
+
     render() {
         return (
             <div className={"searchresults"}>
@@ -101,21 +106,19 @@ class SearchResults extends React.Component {
                 <div className="main">
                     {this.state.all.map((all) => {
                         return (
-                        <div className="row">
-                            <div className="col-xs-12">
-                                <a onClick={() => this.props.changePage('Player')}>
-                                    <div className="col-xs-3">
-                                        <iframe width="560" height="315" src={all[0]}
-                                                frameBorder="0"
-                                                allow="autoplay; encrypted-media" allowFullScreen></iframe>
-                                    </div>
-                                    <div className="col-xs-9">
-                                        <h3>{all[1]}</h3>
-                                        <h3>含んでるワードの数：{all[2]}</h3>
-                                    </div>
-                                </a>
+                            <div className="row">
+                                <div className="col-xs-12">
+                                    <a onClick={() => this.sendVideoId(all[3])}>
+                                        <div className="col-xs-3">
+                                            <iframe title={"movie"} width="560" height="315" src={all[0]} frameBorder="0" allow="autoplay; encrypted-media" allowFullScreen />
+                                        </div>
+                                        <div className="col-xs-9">
+                                            <h3>{all[1]}</h3>
+                                            <h3>含んでるワードの数：{all[2]}</h3>
+                                        </div>
+                                    </a>
+                                </div>
                             </div>
-                        </div>
                         )
                     })}
                 </div>
