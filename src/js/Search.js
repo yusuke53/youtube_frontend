@@ -49,6 +49,7 @@ class Search extends React.Component{
         return(
             <div className={"search"}>
                 <div className="header">
+                    <img src="">
                     <h1 className="text-center">Find Words On Youtube!</h1>
                     <p className="text-center">ユーチューブでたんごをさがそう!</p>
                 </div>
