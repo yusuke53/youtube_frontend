@@ -4,8 +4,11 @@
   "private": true,
   "dependencies": {
     "@absolom/react-3dgallery": "^1.0.3",
+    "@material-ui/core": "^3.0.3",
+    "@material-ui/icons": "^3.0.1",
     "react": "^16.5.0",
     "react-animated-slider": "^1.1.3",
+    "react-desktop": "^0.3.7",
     "react-dom": "^16.5.0",
     "react-redux": "^5.0.7",
     "react-router-dom": "^4.3.1",

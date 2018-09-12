@@ -1,6 +1,12 @@
 import React from 'react';
 import '../css/search.css';
 
+import Button from '@material-ui/core/Button';
+
+
+
+
+
 class Search extends React.Component{
     constructor(props) {
         super(props);
@@ -57,8 +63,11 @@ class Search extends React.Component{
                         <form role="form"  onSubmit={this.handleSubmit}>
                             <div className="form-group col-xs-offset-0 col-xs-12 col-md-offset-2 col-md-8">
                                 <h3>Searching Vocab</h3>
-                                {/*<input className="form-control" type="text" placeholder="e.g. this" ref="vocab"/>*/}
+
                                 <input className="form-control" placeholder="e.g. this" type="text" value={this.state.value} onChange={this.handleChangeVocab} />
+
+
+
                             </div>
                             <div className="form-group col-xs-offset-0 col-xs-12 col-md-offset-2 col-md-8">
                                 <h3>Keyword on Youtube</h3>
@@ -83,18 +92,18 @@ class Search extends React.Component{
                                 </div>
                             </div>
                             <div className="col-xs-offset-0 col-xs-12 col-md-offset-2 col-md-8">
-                                <button type="submit" className="btn btn-success btn-block">Search けんさく</button>
-                                <button className="SearchResults" onClick = {() => this.props.changePage('SearchResults')}>
-                                    SearchResults
-                                </button>
-                                <button className="Player" onClick = {() => this.props.changePage('Player')}>
-                                    Player
-                                </button>
+                                {/*<button type="submit" className="btn btn-success btn-block">Search けんさく</button>*/}
+                                <p className="text-center">
+                                <Button color="primary" type="submit" variant="extendedFab" aria-label="Delete" className="text-center">
+                                    Search けんさく
+                                </Button>
+                                </p>
                             </div>
                         </form>
                     </div>
                 </div>
             </div>
+
         )
     }
 }
