@@ -1,11 +1,10 @@
 import React from 'react';
-import Search from "./js/Search";
-import SearchResults from "./js/SearchResults";
-import Player from "./js/Player";
+import Search from "./Search";
+import SearchResults from "./SearchResults";
+import Player from "./Player";
 
 
-
-class App extends React.Component{
+class AppMobile extends React.Component{
     constructor(props){
         super(props)
         this.state = {
@@ -38,13 +37,11 @@ class App extends React.Component{
     render() {
         let page = 'Search'
         if(this.state.currentPage === 'Search'){
-            page =
-                <Search
+            page = <Search
                 changePage={this.changePage}
                 changeVocab={this.changeVocab}
                 changeKeyword={this.changeKeyword}
             />
-
         }else if(this.state.currentPage === 'SearchResults') {
             page = <SearchResults
                 changePage={this.changePage}
@@ -67,4 +64,4 @@ class App extends React.Component{
     }
 }
 
-export default App;
+export default AppMobile;
