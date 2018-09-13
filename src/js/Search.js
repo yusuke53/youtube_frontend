@@ -6,7 +6,6 @@ import Button from '@material-ui/core/Button';
 
 
 
-
 class Search extends React.Component{
     constructor(props) {
         super(props);
@@ -58,9 +57,15 @@ class Search extends React.Component{
         return(
             <div className={"search"}>
                 <div className="header col-xs-12">
+<<<<<<< HEAD
+                    <img src="pictures/ManaTube.png" className={"ManaTube_left"} alt={"mantube"}/>
+                    <h1 className="text-center">Find Words On Youtube!</h1>
+                    <img src="pictures/ManaTube.png" className={"ManaTube_right"} alt={"manatube"}/>
+=======
                     <img src="pictures/ManaTube.png" className={"ManaTube_left"}/>
                     <h1 className="text-center"><span className={"f"}>F</span>ind <span className={"w"}>W</span>ords <span className={"o"}>O</span>n <span className={"y"}>Y</span>outube!</h1>
                     <img src="pictures/ManaTube.png" className={"ManaTube_right"}/>
+>>>>>>> f57ed39505c7d3e8c96046e697eb71deec2d159a
                     <p className="text-center2">Let's find your words☺</p>
                 </div>
                 <div className="contents col-xs-offset-1 col-xs-10">
@@ -99,11 +104,11 @@ class Search extends React.Component{
                             </div>
                             <div className="col-xs-offset-0 col-xs-12 col-md-offset-2 col-md-8">
                                 {/*<button type="submit" className="btn btn-success btn-block">Search けんさく</button>*/}
-                                <p className="text-center">
-                                <Button color="primary" type="submit" variant="extendedFab" aria-label="Delete" className="text-center">
+                                <h1 className="text-center">
+                                <Button color="primary" type="submit" variant="extendedFab" aria-label="Delete">
                                     Search けんさく
                                 </Button>
-                                </p>
+                                </h1>
                             </div>
                         </form>
                     </div>
