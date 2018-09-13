@@ -175,8 +175,8 @@ class SearchResults extends React.Component {
                                             </Card>
                                             <ListItem>
                                                 <div className="col-xs-9">
-                                                    <h3>{all[1]}</h3>
-                                                    <h3>含んでるワードの数：{all[2]}</h3>
+                                                    {all[1]}
+                                                    含んでるワードの数：{all[2]}
                                                 </div>
                                             </ListItem>
                                         </a>

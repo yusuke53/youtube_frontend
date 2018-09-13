@@ -77,7 +77,7 @@ class Search extends React.Component {
                         </div>
                     </Toolbar>
                     {/*toolbar*/}
-                    <div className="header col-xs-11">
+                    <div className="header col-xs-12">
                         <img src="pictures/ManaTube.png" className={"ManaTube_left"} alt={"manatubeleft"}/>
                         <h1 className="text-center"><span className={"f"}>F</span>ind <span
                             className={"w"}>W</span>ords <span className={"o"}>O</span>n <span className={"y"}>Y</span>outube!
@@ -106,8 +106,19 @@ class Search extends React.Component {
                                     {/*<input className="form-control" type="text" placeholder="e.g. katy perry" ref="keyword"/>*/}
                                     <input className="form-control" placeholder="Youtube Keyword (Rakuten, etc)" type="text" value={this.state.value} onChange={this.handleChangeKeyword} />
                                 </div>
+                                <div className="col-xs-offset-0 col-xs-12 col-md-offset-2 col-md-8">
+                                <p className="text-center">
+                                <div className="sample">
+                                                                        <Button color="primary" type="submit" variant="extendedFab" aria-label="Delete"
+                                                                                className="text-center">
+                                                                            Search けんさく
+                                                                        </Button>
+                                                                        </div>
+                                                                    </p>
 
+                                                                    </div>
                                 <div className="form-group col-xs-offset-0 col-xs-12 col-md-offset-2 col-md-8">
+
                                     <h3>Category</h3>
                                     <div className="sample">
                                         <ListItem>
@@ -141,12 +152,7 @@ class Search extends React.Component {
                                 </div>
                                 <div className="col-xs-offset-0 col-xs-12 col-md-offset-2 col-md-8">
                                     {/*<button type="submit" className="btn btn-success btn-block">Search けんさく</button>*/}
-                                    <p className="text-center">
-                                        <Button color="primary" type="submit" variant="extendedFab" aria-label="Delete"
-                                                className="text-center">
-                                            Search けんさく
-                                        </Button>
-                                    </p>
+
                                 </div>
                             </form>
                         </div>
