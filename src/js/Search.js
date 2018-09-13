@@ -49,7 +49,7 @@ class Search extends React.Component{
         let vocab = this.state.vocab;
         let keyword = this.state.keyword;
         // 逆にしてる
-        xhttp.open("GET", "https://rakutenmafia.azurewebsites.net/api/search?q=" + keyword + "&k=" + vocab, true);
+        xhttp.open("GET", "https://manatube.azurewebsites.net/api/search?q=" + keyword + "&k=" + vocab, true);
         xhttp.send();
     }
 
@@ -69,8 +69,12 @@ class Search extends React.Component{
                                 <h3>Searching Vocab</h3>
 
                                 <input className="form-control" placeholder="e.g. this" type="text" value={this.state.value} onChange={this.handleChangeVocab} />
+                            </div>
 
-
+                            <div className="form-group col-xs-offset-0 col-xs-12 col-md-offset-2 col-md-8">
+                                <h3>Keyword on Youtube</h3>
+                                {/*<input className="form-control" type="text" placeholder="e.g. katy perry" ref="keyword"/>*/}
+                                <input className="form-control" placeholder="e.g. this" type="text" value={this.state.value} onChange={this.handleChangeKeyword} />
 
                             </div>
 

@@ -99,7 +99,7 @@ class Player extends React.Component{
         };
         let videoId = this.props.videoId;
         let vocab = this.props.vocab;
-        xhttp.open("GET", "https://rakutenmafia.azurewebsites.net/api/subtitle/matches?v=" + videoId + "&k="  + vocab, true);
+        xhttp.open("GET", "https://manatube.azurewebsites.net/api/subtitle/matches?v=" + videoId + "&k="  + vocab, true);
         xhttp.send();
     }
 
