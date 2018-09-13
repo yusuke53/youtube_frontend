@@ -4,6 +4,7 @@ import SearchResults from "./js/SearchResults";
 import Player from "./js/Player";
 
 
+
 class App extends React.Component{
     constructor(props){
         super(props)
@@ -37,11 +38,13 @@ class App extends React.Component{
     render() {
         let page = 'Search'
         if(this.state.currentPage === 'Search'){
-            page = <Search
+            page =
+                <Search
                 changePage={this.changePage}
                 changeVocab={this.changeVocab}
                 changeKeyword={this.changeKeyword}
             />
+
         }else if(this.state.currentPage === 'SearchResults') {
             page = <SearchResults
                 changePage={this.changePage}
