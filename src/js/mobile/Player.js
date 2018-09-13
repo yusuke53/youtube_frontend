@@ -117,7 +117,7 @@ class Player extends React.Component {
     render() {
         const {loading} = this.state;
         if (loading) return (
-            <div>
+//            <div>
                 <Page>
                     <Toolbar>
                         <div
@@ -138,7 +138,7 @@ class Player extends React.Component {
                         <ProgressCircular indeterminate/>
                     </div>
                 </Page>
-            </div>
+//            </div>
         )
         const opts = {
             width: '90%',
@@ -147,7 +147,7 @@ class Player extends React.Component {
             }
         };
         return (
-            <div className={"player"}>
+//            <div className={"player"}>
                 <Page>
                     <Toolbar>
                         <div
@@ -188,7 +188,7 @@ class Player extends React.Component {
                     })}
                 </Page>
 
-            </div>
+//            </div>
         )
     }
 }
