@@ -5,10 +5,10 @@ import {
     Page,
     ListItem,
     Card,
-    ProgressCircular
+    ProgressCircular, Toolbar,
+    BackButton
 } from 'react-onsenui';
 
-import NavBar from './NavBar';
 
 function getThumbnailAll(obj) {
     var thumbnails = [];
@@ -63,6 +63,7 @@ class SearchResults extends React.Component {
             all : [],
             loading : true
         };
+        this.backPage = this.backPage.bind(this)
     }
 
     componentDidMount() {
@@ -109,12 +110,30 @@ class SearchResults extends React.Component {
         this.props.changePage('Player')
     }
 
+    backPage(){
+        this.props.changePage('Search')
+    }
+
 
     render() {
         const { loading } = this.state;
         if (loading) return(
             <div>
-                <Page renderToolbar={() => <NavBar title='Search Results'/>}>
+                <Page>
+                    <Toolbar>
+                        <div
+                            className="center"
+                        >
+                            Search Results
+                        </div>
+                        <div
+                            className="left"
+                        >
+                            <BackButton onClick={() => {this.props.changePage('Search')}}>
+                                Back
+                            </BackButton>
+                        </div>
+                    </Toolbar>
                     <div style={{display: 'flex',  justifyContent:'center', alignItems:'center', height: '100vh'}}>
                         <ProgressCircular indeterminate />
                     </div>
@@ -123,19 +142,32 @@ class SearchResults extends React.Component {
         )
         return (
             <div className={"searchresults"}>
-                <Page renderToolbar={() => <NavBar title='Search Results'/>}>
+                <Page>
+                    <Toolbar>
+                        <div
+                            className="center"
+                        >
+                            Search Results
+                        </div>
+                        <div
+                            className="left"
+                        >
+                            <BackButton onClick={() => {this.props.changePage('Search')}}>
+                                Back
+                            </BackButton>
+                        </div>
+                    </Toolbar>
                     <div className="header">
                     </div>
                     <div className="main">
                         {this.state.all.map((all) => {
                             return (
                                 <div className="row">
-                                    <div className="col-xs-12">
+                                    <div className="col-xs-11">
                                         <a onClick={() => this.sendVideoId(all[3])}>
                                             <Card>
                                                 <ListItem>
-                                                    <img src={all[0]} style={imageStyle}></img>
-
+                                                    <img src={all[0]} style={imageStyle} alt={"imagedisp"}></img>
                                                 </ListItem>
                                             </Card>
                                             <ListItem>

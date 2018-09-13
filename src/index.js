@@ -10,21 +10,21 @@ import {
 } from "react-device-detect";
 
 
-class Index extends React.Component{
-    render(){
-        return(
+class Index extends React.Component {
+    render() {
+        return (
             <div className={"index"}>
                 <BrowserView>
-                    <App />
+                <App />
                 </BrowserView>
                 <MobileView>
-                    <AppMobile />
+                <AppMobile/>
                 </MobileView>
-                {/*<AppMobile />*/}
+
             </div>
         )
     }
 }
 
-ReactDOM.render(<Index />, document.getElementById('root'));
+ReactDOM.render(<Index/>, document.getElementById('root'));
 registerServiceWorker();

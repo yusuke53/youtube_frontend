@@ -1,16 +1,13 @@
 import React from 'react';
 import '../css/searchresults.css';
 
-import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
+
 
 import 'react-mdl/extra/material.css';
 import 'react-mdl/extra/material.js';
 import {
-    Page,
     ProgressCircular
 } from 'react-onsenui';
-import NavBar from "./mobile/NavBar";
 
 
 function getThumbnailAll(obj) {
@@ -120,8 +117,6 @@ class SearchResults extends React.Component {
         )
         return (
             <div className={"searchresults"}>
-
-
                 <div className="header">
                     <h1 className="text-center">Find Words On Youtube!</h1>
                     <p className="text-center">ユーチューブでたんごをさがそう!</p>
