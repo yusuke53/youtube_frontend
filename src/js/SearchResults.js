@@ -1,6 +1,13 @@
 import React from 'react';
 import '../css/searchresults.css';
 
+import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/core/styles';
+
+import 'react-mdl/extra/material.css';
+import 'react-mdl/extra/material.js';
+
+
 
 function getThumbnailAll(obj) {
     var thumbnails = [];
@@ -97,9 +104,9 @@ class SearchResults extends React.Component {
     }
 
     render() {
+
         return (
             <div className={"searchresults"}>
-
 
 
                 <div className="header">
