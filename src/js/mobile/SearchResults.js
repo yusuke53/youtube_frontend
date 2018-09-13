@@ -130,7 +130,7 @@ class SearchResults extends React.Component {
                             className="left"
                         >
                             <BackButton onClick={() => {this.props.changePage('Search')}}>
-                                Back
+
                             </BackButton>
                         </div>
                     </Toolbar>
@@ -153,7 +153,6 @@ class SearchResults extends React.Component {
                             className="left"
                         >
                             <BackButton onClick={() => {this.props.changePage('Search')}}>
-                                Back
                             </BackButton>
                         </div>
                     </Toolbar>
