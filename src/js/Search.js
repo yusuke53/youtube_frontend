@@ -49,7 +49,7 @@ class Search extends React.Component{
         let vocab = this.state.vocab;
         let keyword = this.state.keyword;
         // 逆にしてる
-        xhttp.open("GET", "https://rakutenmafia.azurewebsites.net/api/search?q=" + keyword + "&k=" + vocab, true);
+        xhttp.open("GET", "https://manatube.azurewebsites.net/api/search?q=" + keyword + "&k=" + vocab, true);
         xhttp.send();
     }
 

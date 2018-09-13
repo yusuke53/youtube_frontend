@@ -1,9 +1,15 @@
 import React from 'react';
-import '../css/player.css';
+import '../../css/player.css';
 import YouTube from "react-youtube";
-import {Page, ProgressCircular} from "react-onsenui";
-import NavBar from "./mobile/NavBar";
 
+import {
+    Page,
+    ListItem,
+    Card,
+    ProgressCircular
+} from 'react-onsenui';
+
+import NavBar from './NavBar';
 
 function getdurationAll(obj) {
     var durations = [];
@@ -46,7 +52,7 @@ class Player extends React.Component{
             start :'10',
             duration : '20',
             player: null,
-            loading : true
+            loading: true
         };
         this.onReady = this.onReady.bind(this);
         this.onChangeStartVideo = this.onChangeStartVideo.bind(this);
@@ -110,46 +116,25 @@ class Player extends React.Component{
         const { loading } = this.state;
         if (loading) return(
             <div>
+                <Page renderToolbar={() => <NavBar title='Search Results'/>}>
                     <div style={{display: 'flex',  justifyContent:'center', alignItems:'center', height: '100vh'}}>
                         <ProgressCircular indeterminate />
                     </div>
-
+                </Page>
             </div>
         )
         const opts = {
-            height: '390',
-            width: '640',
+            width: '100%',
             playerVars: { // https://developers.google.com/youtube/player_parameters
                 autoplay: 1
             }
         };
         return(
             <div className={"player"}>
-                <div className="header">
-                    <h1 className="text-center">Find Words On Youtube!</h1>
-                    <p className="text-center">ユーチューブでたんごをさがそう!</p>
-                    <p className="text-center"><a href="/" className="btn btn-success">Home ほーむ</a></p>
-                </div>
-                <aside className="col-xs-4">
-                    <h3>List of texts that have : {this.props.vocab}</h3>
-                    {this.state.all.map((all) => {
-                        return (
-                            <div>
-                                <button onClick={()=>this.onChangeStartVideo(all)}>
-                                        <p>start:{all[0]}</p>
-                                        <p>text:{all[1]}</p>
-                                </button>
-                            </div>
-                        )
-                    })}
-                    <button className="SearchResults" onClick = {() => this.props.changePage('SearchResults')}>
-                        SearchResults
-                    </button>
-                    <button className="Player" onClick = {() => this.props.changePage('Player')}>
-                        Player
-                    </button>
-                </aside>
-                <div className="main col-xs-8">
+                <Page renderToolbar={() => <NavBar title='Search Results'/>}>
+                    <div className="header">
+                    </div>
+
                     <YouTube
                         videoId={this.props.videoId}
                         onReady={this.onReady}
@@ -157,7 +142,20 @@ class Player extends React.Component{
                     />
                     <button onClick={this.onPlayVideo}>Play</button>
                     <button onClick={this.onPauseVideo}>Pause</button>
-                </div>
+
+                    <h3>List of texts that have : {this.props.vocab}</h3>
+                    {this.state.all.map((all) => {
+                        return (
+                            <div>
+                                <button onClick={()=>this.onChangeStartVideo(all)}>
+                                    <p>start:{all[0]} {all[1]}</p>
+
+                                </button>
+                            </div>
+                        )
+                    })}
+                </Page>
+
             </div>
         )
     }

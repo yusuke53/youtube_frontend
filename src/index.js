@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
+import AppMobile from './js/mobile/AppMobile'
 import {
     BrowserView,
     MobileView
@@ -17,8 +18,9 @@ class Index extends React.Component{
                     <App />
                 </BrowserView>
                 <MobileView>
-                    unti
+                    <AppMobile />
                 </MobileView>
+                {/*<AppMobile />*/}
             </div>
         )
     }

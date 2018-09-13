@@ -1,17 +1,14 @@
 import React from 'react';
-import '../css/searchresults.css';
+import '../../css/searchresults.css';
 
-import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
-
-import 'react-mdl/extra/material.css';
-import 'react-mdl/extra/material.js';
 import {
     Page,
+    ListItem,
+    Card,
     ProgressCircular
 } from 'react-onsenui';
-import NavBar from "./mobile/NavBar";
 
+import NavBar from './NavBar';
 
 function getThumbnailAll(obj) {
     var thumbnails = [];
@@ -51,6 +48,9 @@ function getvideoIdAll(obj) {
     return videoIds;
 }
 
+const imageStyle ={
+    width : "100%",
+}
 
 class SearchResults extends React.Component {
     constructor(props){
@@ -73,6 +73,7 @@ class SearchResults extends React.Component {
             console.log(this);
             if (xhttp.readyState === 4 && xhttp.status === 200){
                 console.log(this.responseText);
+
                 let response = JSON.parse(this.responseText);
                 console.log(response.length);
                 let thumbnails = getThumbnailAll(response);
@@ -108,51 +109,49 @@ class SearchResults extends React.Component {
         this.props.changePage('Player')
     }
 
+
     render() {
         const { loading } = this.state;
         if (loading) return(
             <div>
+                <Page renderToolbar={() => <NavBar title='Search Results'/>}>
                     <div style={{display: 'flex',  justifyContent:'center', alignItems:'center', height: '100vh'}}>
                         <ProgressCircular indeterminate />
                     </div>
-
+                </Page>
             </div>
         )
         return (
             <div className={"searchresults"}>
+                <Page renderToolbar={() => <NavBar title='Search Results'/>}>
+                    <div className="header">
+                    </div>
+                    <div className="main">
+                        {this.state.all.map((all) => {
+                            return (
+                                <div className="row">
+                                    <div className="col-xs-12">
+                                        <a onClick={() => this.sendVideoId(all[3])}>
+                                            <Card>
+                                                <ListItem>
+                                                    <img src={all[0]} style={imageStyle}></img>
 
-
-                <div className="header">
-                    <h1 className="text-center">Find Words On Youtube!</h1>
-                    <p className="text-center">ユーチューブでたんごをさがそう!</p>
-                    <p className="text-center"><a href="/" className="btn btn-success">Home ほーむ</a></p>
-                </div>
-                <div className="main">
-                    {this.state.all.map((all) => {
-                        return (
-                            <div className="row">
-                                <div className="col-xs-12">
-                                    <a onClick={() => this.sendVideoId(all[3])}>
-                                        <div className="col-xs-3">
-                                            <iframe title={"movie"} width="560" height="315" src={all[0]} frameBorder="0" allow="autoplay; encrypted-media" allowFullScreen />
-                                        </div>
-                                        <div className="col-xs-9">
-                                            <h3>{all[1]}</h3>
-                                            <h3>含んでるワードの数：{all[2]}</h3>
-                                        </div>
-                                    </a>
+                                                </ListItem>
+                                            </Card>
+                                            <ListItem>
+                                                <div className="col-xs-9">
+                                                    <h3>{all[1]}</h3>
+                                                    <h3>含んでるワードの数：{all[2]}</h3>
+                                                </div>
+                                            </ListItem>
+                                        </a>
+                                    </div>
                                 </div>
-                            </div>
-                        )
-                    })}
-                </div>
-                {this.state.a}
-                <button className="SearchResults" onClick = {() => this.props.changePage('SearchResults')}>
-                    SearchResults
-                </button>
-                <button className="Player" onClick = {() => this.props.changePage('Player')}>
-                    Player
-                </button>
+                            )
+                        })}
+                    </div>
+                    {this.state.a}
+                </Page>
             </div>
         )
     }
