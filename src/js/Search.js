@@ -61,8 +61,7 @@ class Search extends React.Component{
                     <img src="pictures/ManaTube.png" className={"ManaTube_left"}/>
                     <h1 className="text-center"><span className={"f"}>F</span>ind <span className={"w"}>W</span>ords <span className={"o"}>O</span>n <span className={"y"}>Y</span>outube!</h1>
                     <img src="pictures/ManaTube.png" className={"ManaTube_right"}/>
-
-                    <p className="text-center2">Let's find your words☺</p>
+                    <p className="text-center2">---☺Let's find your words☺---</p>
                 </div>
                 <div className="contents col-xs-offset-1 col-xs-10">
                     <div className="col-xs-12">
