@@ -49,7 +49,7 @@ function getvideoIdAll(obj) {
 }
 
 const imageStyle ={
-    width : "100%",
+    width : "90%",
 }
 
 class SearchResults extends React.Component {
@@ -64,8 +64,8 @@ class SearchResults extends React.Component {
             all : [],
             loading : true,
             width: window.innerWidth,
-                  height: isIOS ? '' : '100%',
-                  scrolling: isIOS ? 'no' : 'yes',
+              height: isIOS ? '' : '100%',
+              scrolling: isIOS ? 'no' : 'yes',
         };
         this.backPage = this.backPage.bind(this)
     }
@@ -185,7 +185,6 @@ class SearchResults extends React.Component {
                             )
                         })}
                     </div>
-                    {this.state.a}
                 </Page>
             </div>
         )

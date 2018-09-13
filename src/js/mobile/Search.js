@@ -1,17 +1,18 @@
 import React from 'react';
-import '../../css/search.css';
+import '../../css/searchMobile.css';
 
 import Button from '@material-ui/core/Button';
 
 import {
     Page,
     Switch,
-    ListItem, Toolbar
+    ListItem,
+    Toolbar
 } from 'react-onsenui';
 
 
 import 'onsenui/css/onsenui.css';
-import 'onsenui/css/onsen-css-components-blue-theme.css';
+import 'onsenui/css/onsen-css-components.css';
 
 class Search extends React.Component {
     constructor(props) {
@@ -65,8 +66,8 @@ class Search extends React.Component {
 
     render() {
         return (
-            <div className={"search"}>
-                {/*toolbar*/}
+
+
                 <Page>
                     <Toolbar>
                         <div
@@ -151,7 +152,7 @@ class Search extends React.Component {
                         </div>
                     </div>
                 </Page>
-            </div>
+
 
         )
     }
