@@ -1,6 +1,6 @@
 import React from 'react';
 import '../../css/searchresults.css';
-
+import ons from 'onsenui';
 import {
     Page,
     ListItem,
@@ -55,13 +55,17 @@ const imageStyle ={
 class SearchResults extends React.Component {
     constructor(props){
         super(props)
+         const isIOS = ons.platform.isIOS();
         this.state = {
             thumbnails: [],
             titles : [],
             wordHitCounts : [],
             videoIds : [],
             all : [],
-            loading : true
+            loading : true,
+            width: window.innerWidth,
+                  height: isIOS ? '' : '100%',
+                  scrolling: isIOS ? 'no' : 'yes',
         };
         this.backPage = this.backPage.bind(this)
     }
