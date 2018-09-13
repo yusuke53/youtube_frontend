@@ -66,9 +66,11 @@ class Player extends React.Component{
         this.state.player.pauseVideo();
     }
     onChangeStartVideo(all) {
+        this.setState({start: all[0]});
+        this.setState({duration: all[2]});
         this.state.player.loadVideoById({
             'videoId': this.props.videoId,
-            'startSeconds': all[0],
+            'startSeconds': all[0]-10,
             'endSeconds': all[0]+all[2],
             'suggestedQuality': 'default'
         })
@@ -129,6 +131,7 @@ class Player extends React.Component{
                     <h1 className="text-center">Find Words On Youtube!</h1>
                     <p className="text-center">ユーチューブでたんごをさがそう!</p>
                     <p className="text-center"><a href="/" className="btn btn-success">Home ほーむ</a></p>
+                    <p className="text-center"><a onClick={()=>this.props.changePage('SearchResults')} className="btn btn-primary">検索結果に戻る</a></p>
                 </div>
                 <aside className="col-xs-4">
                     <h3>List of texts that have : {this.props.vocab}</h3>
