@@ -1,3 +1,8 @@
-.header{
-    margin: 50px 25px 0 0;
+/*.header{*/
+    /*margin: 50px 25px 0 0;*/
+/*}*/
+
+.row {
+    margin-right: 0px;
+    margin-left: 0px;
 }

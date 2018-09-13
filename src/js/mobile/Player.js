@@ -131,7 +131,6 @@ class Player extends React.Component {
                             <BackButton onClick={() => {
                                 this.props.changePage('SearchResults')
                             }}>
-                                Back
                             </BackButton>
                         </div>
                     </Toolbar>
@@ -162,7 +161,6 @@ class Player extends React.Component {
                             <BackButton onClick={() => {
                                 this.props.changePage('SearchResults')
                             }}>
-                                Back
                             </BackButton>
                         </div>
                     </Toolbar>
