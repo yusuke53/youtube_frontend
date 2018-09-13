@@ -58,6 +58,7 @@ class Search extends React.Component {
             <div className={"search"}>
                 <div className="header col-xs-12">
 
+
                     <img src="pictures/ManaTube.png" className={"ManaTube_left"} alt={"manatubeleft"}/>
                     <h1 className="text-center"><span className={"f"}>F</span>ind <span
                         className={"w"}>W</span>ords <span className={"o"}>O</span>n <span className={"y"}>Y</span>outube!
@@ -70,6 +71,7 @@ class Search extends React.Component {
                     <div className="col-xs-12">
                         <form onSubmit={this.handleSubmit}>
                             <div className="form-group col-xs-offset-0 col-xs-12 col-md-offset-2 col-md-8">
+
                                 <h3>Searching Vocab</h3>
 
                                 <input className="form-control" placeholder="e.g. this" type="text"
