@@ -128,10 +128,10 @@ class SearchResults extends React.Component {
                             <div className="row">
                                 <div className="col-xs-12">
                                     <a onClick={() => this.sendVideoId(all[3])}>
-                                        <div className="col-xs-3">
-                                            <iframe title={"movie"} width="560" height="315" src={all[0]} frameBorder="0" allow="autoplay; encrypted-media" allowFullScreen />
+                                        <div className="thumbnail col-xs-3">
+                                            <iframe title={"movie"} width="560" height="315" src={all[0]} frameBorder="0" allow="autoplay; encrypted-media" scrolling="no" allowFullScreen />
                                         </div>
-                                        <div className="col-xs-9">
+                                        <div className="title col-xs-9">
                                             <h3>{all[1]}</h3>
                                             <h3>含んでるワードの数：{all[2]}</h3>
                                         </div>
