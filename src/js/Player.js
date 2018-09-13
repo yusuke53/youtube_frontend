@@ -62,9 +62,11 @@ class Player extends React.Component{
         this.state.player.pauseVideo();
     }
     onChangeStartVideo(all) {
+        this.setState({start: all[0]});
+        this.setState({duration: all[2]});
         this.state.player.loadVideoById({
             'videoId': this.props.videoId,
-            'startSeconds': all[0],
+            'startSeconds': all[0]-10,
             'endSeconds': all[0]+all[2],
             'suggestedQuality': 'default'
         })
