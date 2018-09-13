@@ -1,6 +1,16 @@
 import React from 'react';
 import '../css/player.css';
+import YouTube from "react-youtube";
 
+function getdurationAll(obj) {
+    var durations = [];
+
+    for(var i=0; i<obj.length; i++){
+        durations[i] = obj[i].dur;
+    }
+
+    return durations;
+}
 
 function getstartAll(obj) {
     var starts = [];
@@ -27,10 +37,37 @@ class Player extends React.Component{
         super(props)
         this.state = {
             starts: [],
-            text: [],
-            dur: [],
+            texts: [],
+            durations: [],
             all: [],
+            start :'10',
+            duration : '20',
+            player: null
         };
+        this.onReady = this.onReady.bind(this);
+        this.onChangeStartVideo = this.onChangeStartVideo.bind(this);
+        this.onPlayVideo = this.onPlayVideo.bind(this);
+        this.onPauseVideo = this.onPauseVideo.bind(this);
+    }
+    onReady(event) {
+        console.log(`YouTube Player object for videoId: "${this.props.videoId}" has been saved to state.`);
+        this.setState({
+            player: event.target,
+        });
+    }
+    onPlayVideo() {
+        this.state.player.playVideo();
+    }
+    onPauseVideo() {
+        this.state.player.pauseVideo();
+    }
+    onChangeStartVideo(all) {
+        this.state.player.loadVideoById({
+            'videoId': this.props.videoId,
+            'startSeconds': all[0],
+            'endSeconds': all[0]+all[2],
+            'suggestedQuality': 'default'
+        })
     }
     componentDidMount() {
         var xhttp = new XMLHttpRequest();
@@ -43,71 +80,35 @@ class Player extends React.Component{
                 console.log(response);
                 let starts = getstartAll(response);
                 let texts = gettextAll(response);
+                let durations = getdurationAll(response);
+                console.log(durations);
                 let all = [];
                 for(var i=0; i<starts.length; i++){
-                    all.push([starts[i], texts[i]])
+                    all.push([starts[i], texts[i], durations[i]])
                 }
                 console.log(all);
                 self.setState({
                     starts: starts,
                     texts : texts,
+                    durations : durations,
                     all : all
                 })
             }
-        }
-        let videoId = this.props.videoId
-        let vocab = this.props.vocab
+        };
+        let videoId = this.props.videoId;
+        let vocab = this.props.vocab;
         xhttp.open("GET", "https://rakutenmafia.azurewebsites.net/api/subtitle/matches?v=" + videoId + "&k="  + vocab, true);
         xhttp.send();
     }
-//     iframeapi() {
-//         // 2. This code loads the IFrame Player API code asynchronously.
-//         var tag = document.createElement('script');
-//
-//         tag.src = "https://www.youtube.com/iframe_api";
-//         var firstScriptTag = document.getElementsByTagName('script')[0];
-//         firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-//
-// // 3. This function creates an <iframe> (and YouTube player)
-// //    after the API code downloads.
-//         if (typeof videoId === 'undefined') var videoId = 'FlsCjmMhFmw'; //youtube rewind inseted if no videoId found
-//         var player;
-//
-//         function onYouTubeIframeAPIReady() {
-//             player = new YT.Player('player', {
-//                 height: '390',
-//                 width: '640',
-//                 videoId: videoId,
-//                 events: {
-//                     'onReady': onPlayerReady
-//                 }
-//             });
-//         }
-//
-// // params for new YT.Player()
-// //    playerVars: {
-// //        start: 25,
-// //        end: 30
-// //    },
-//
-// // 4. The API will call this function when the video player is ready.
-//         function onPlayerReady(event) {
-//             event.target.playVideo();
-//         }
-//
-// //trying to load and play video
-//         function onClickLoadVideo(startTime, duration) {
-//             console.log("onClickLoadVideo called");
-//             player.loadVideoById({
-//                 'videoId': videoId,
-//                 'startSeconds': start,
-//                 'endSeconds': startTime + duration,
-//                 'suggestedQuality': 'default'
-//             });
-//         }
-//     }
 
     render(){
+        const opts = {
+            height: '390',
+            width: '640',
+            playerVars: { // https://developers.google.com/youtube/player_parameters
+                autoplay: 1
+            }
+        };
         return(
             <div className={"player"}>
                 <div className="header">
@@ -120,10 +121,10 @@ class Player extends React.Component{
                     {this.state.all.map((all) => {
                         return (
                             <div>
-                                <ul>
-                                    <li>start:{all[0]}</li>
-                                    <li>text:{all[1]}</li>
-                                </ul>
+                                <button onClick={()=>this.onChangeStartVideo(all)}>
+                                        <p>start:{all[0]}</p>
+                                        <p>text:{all[1]}</p>
+                                </button>
                             </div>
                         )
                     })}
@@ -135,21 +136,14 @@ class Player extends React.Component{
                     </button>
                 </aside>
                 <div className="main col-xs-8">
-                    <div id="player"></div>
+                    <YouTube
+                        videoId={this.props.videoId}
+                        onReady={this.onReady}
+                        opts={opts}
+                    />
+                    <button onClick={this.onPlayVideo}>Play</button>
+                    <button onClick={this.onPauseVideo}>Pause</button>
                 </div>
-                {/*<script>var videoId = '[[${video.videoId}]]';</script>*/}
-                {/*<script th:src="youtubeHandler.js"></script>*/}
-
-                {/*<h2>[[${video.title}]]</h2>*/}
-                {/*<h3>List of texts that have: <b>[[${keyword}]]</b></h3>*/}
-                {/*<div th:each="data:${subtitleData}" className="col-xs-12">*/}
-                {/*<a style="text-decoration: none;" href="#"*/}
-                {/*th:onclick="'onClickLoadVideo(' + ${data.start} + ',' + ' ' + ')'">*/}
-                {/*<div className="alert alert-info">*/}
-                {/*[[${data.text}]]*/}
-                {/*</div>*/}
-                {/*</a>*/}
-                {/*</div>*/}
             </div>
         )
     }
