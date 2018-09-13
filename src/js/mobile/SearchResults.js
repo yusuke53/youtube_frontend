@@ -1,6 +1,6 @@
 import React from 'react';
 import '../../css/searchresults.css';
-
+import ons from 'onsenui';
 import {
     Page,
     ListItem,
@@ -49,19 +49,23 @@ function getvideoIdAll(obj) {
 }
 
 const imageStyle ={
-    width : "100%",
+    width : "90%",
 }
 
 class SearchResults extends React.Component {
     constructor(props){
         super(props)
+         const isIOS = ons.platform.isIOS();
         this.state = {
             thumbnails: [],
             titles : [],
             wordHitCounts : [],
             videoIds : [],
             all : [],
-            loading : true
+            loading : true,
+            width: window.innerWidth,
+              height: isIOS ? '' : '100%',
+              scrolling: isIOS ? 'no' : 'yes',
         };
         this.backPage = this.backPage.bind(this)
     }
@@ -171,8 +175,8 @@ class SearchResults extends React.Component {
                                             </Card>
                                             <ListItem>
                                                 <div className="col-xs-9">
-                                                    <h3>{all[1]}</h3>
-                                                    <h3>含んでるワードの数：{all[2]}</h3>
+                                                    {all[1]}
+                                                    含んでるワードの数：{all[2]}
                                                 </div>
                                             </ListItem>
                                         </a>
@@ -181,7 +185,6 @@ class SearchResults extends React.Component {
                             )
                         })}
                     </div>
-                    {this.state.a}
                 </Page>
             </div>
         )
