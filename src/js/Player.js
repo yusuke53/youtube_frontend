@@ -162,8 +162,6 @@ class Player extends React.Component {
                         onReady={this.onReady}
                         opts={opts}
                     />
-                    <button onClick={this.onPlayVideo}>Play</button>
-                    <button onClick={this.onPauseVideo}>Pause</button>
                 </div>
             </div>
         )
