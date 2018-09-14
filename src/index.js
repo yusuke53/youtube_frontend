@@ -18,7 +18,9 @@ class Index extends React.Component {
                 <App />
                 </BrowserView>
                 <MobileView>
-                <AppMobile/>
+                    <div classname="lock">
+                        <AppMobile/>
+                    </div>
                 </MobileView>
 
             </div>

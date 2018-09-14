@@ -110,7 +110,7 @@ class Search extends React.Component {
                                 <div className="col-xs-offset-0 col-xs-12 col-md-offset-2 col-md-8">
                                 <p className="text-center">
                                 <div className="sample">
-                                                                        <Button className="button--large--cta"  color="primary" type="submit" variant="extendedFab" aria-label="Delete">
+                                                                        <Button className="button--large--cta"  color="primary"  type="submit" variant="extendedFab" aria-label="Delete">
                                                                             Search けんさく
                                                                         </Button>
                                                                         </div>
