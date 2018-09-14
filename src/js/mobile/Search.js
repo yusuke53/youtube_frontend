@@ -1,14 +1,15 @@
 import React from 'react';
 import '../../css/searchMobile.css';
 
-// import Button from '@material-ui/core/Button';
+import Button from '@material-ui/core/Button';
 
 import {
     Page,
     Switch,
     ListItem,
     Toolbar,
-    Button
+    List,
+    // Button
 } from 'react-onsenui';
 
 
@@ -21,7 +22,8 @@ class Search extends React.Component {
         this.state = {
             vocab: '',
             keyword: '',
-            formFlg: false
+            formFlg: false,
+            isExpanded: true
         };
 
         this.handleChangeVocab = this.handleChangeVocab.bind(this);
@@ -88,19 +90,9 @@ class Search extends React.Component {
                     <div className="col-xs-12">
                         <form onSubmit={this.handleSubmit}>
                             <div className="form-group col-xs-offset-0 col-xs-12 col-md-offset-2 col-md-8">
-                                {/*<h3>Searching Vocab</h3>*/}
-
                                 <input className="form-control" placeholder="Vocab (apple, car, etc..)" type="text"
                                        value={this.state.value} onChange={this.handleChangeVocab}/>
                             </div>
-
-                            {/*<div className="form-group col-xs-offset-0 col-xs-12 col-md-offset-2 col-md-8">*/}
-                            {/*<h3>Keyword on Youtube</h3>*/}
-                            {/*/!*<input className="form-control" type="text" placeholder="e.g. katy perry" ref="keyword"/>*!/*/}
-                            {/*<input className="form-control" placeholder="e.g. this" type="text"*/}
-                            {/*value={this.state.value} onChange={this.handleChangeKeyword}/>*/}
-
-                            {/*</div>*/}
 
                             <div className="form-group col-xs-offset-0 col-xs-12 col-md-offset-2 col-md-8"
                                  style={{display: this.state.formFlg ? '' : 'none'}}>
@@ -109,16 +101,14 @@ class Search extends React.Component {
                                 <input className="form-control" placeholder="Youtube Keyword (Rakuten, etc)" type="text"
                                        value={this.state.value} onChange={this.handleChangeKeyword}/>
                             </div>
-                            <div className="col-xs-offset-1 col-xs-10 col-md-offset-2 col-md-8">
+                            <div className="col-xs-offset-2 col-xs-12 col-md-offset-2 col-md-8">
                                 <p className="text-center">
                                     <div className="sample">
-                                        <Button className="button button--outline" color="primary" type="submit"
-                                                variant="extendedFab" aria-label="Delete">
+                                        <Button variant="outlined" color="primary" type="submit" aria-label="Delete">
                                             Search けんさく
                                         </Button>
                                     </div>
                                 </p>
-
                             </div>
                             <div className="form-group col-xs-offset-0 col-xs-12 col-md-offset-2 col-md-8">
 
@@ -155,8 +145,8 @@ class Search extends React.Component {
                             </div>
                             <div className="col-xs-offset-0 col-xs-12 col-md-offset-2 col-md-8">
                                 {/*<button type="submit" className="btn btn-success btn-block">Search けんさく</button>*/}
-
                             </div>
+
                         </form>
                     </div>
                 </div>
