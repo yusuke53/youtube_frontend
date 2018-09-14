@@ -2,6 +2,7 @@ import React from 'react';
 import Search from "./Search";
 import SearchResults from "./SearchResults";
 import Player from "./Player";
+import '../../css/lock.css'
 
 
 class AppMobile extends React.Component {
