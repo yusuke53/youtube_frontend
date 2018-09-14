@@ -1,13 +1,14 @@
 import React from 'react';
 import '../../css/searchMobile.css';
 
-import Button from '@material-ui/core/Button';
+// import Button from '@material-ui/core/Button';
 
 import {
     Page,
     Switch,
     ListItem,
-    Toolbar
+    Toolbar,
+    Button
 } from 'react-onsenui';
 
 
@@ -109,8 +110,7 @@ class Search extends React.Component {
                                 <div className="col-xs-offset-0 col-xs-12 col-md-offset-2 col-md-8">
                                 <p className="text-center">
                                 <div className="sample">
-                                                                        <Button color="primary" type="submit" variant="extendedFab" aria-label="Delete"
-                                                                                className="text-center">
+                                                                        <Button className="button--large--cta"  color="primary" type="submit" variant="extendedFab" aria-label="Delete">
                                                                             Search けんさく
                                                                         </Button>
                                                                         </div>
