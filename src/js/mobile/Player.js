@@ -141,7 +141,7 @@ class Player extends React.Component {
 //            </div>
         )
         const opts = {
-            width: '90%',
+            width: '100%',
             playerVars: { // https://developers.google.com/youtube/player_parameters
                 autoplay: 0,
                 cc_load_policy: 1,

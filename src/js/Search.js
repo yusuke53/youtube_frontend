@@ -1,7 +1,7 @@
 import React from 'react';
 import '../css/search.css';
 import Button from '@material-ui/core/Button';
-
+import VideoHistory from "./VideoHistory";
 
 class Search extends React.Component {
     constructor(props) {
@@ -9,11 +9,14 @@ class Search extends React.Component {
         this.state = {
             vocab: '',
             keyword: '',
-            formFlg: false
+            category: '',
+            formFlg: false,
+            radio: "",
         };
 
         this.handleChangeVocab = this.handleChangeVocab.bind(this);
         this.handleChangeKeyword = this.handleChangeKeyword.bind(this);
+        this.handleChangeCategory = this.handleChangeCategory.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
@@ -28,6 +31,9 @@ class Search extends React.Component {
     handleChangeKeyword(event) {
         this.setState({keyword: event.target.value});
     }
+    handleChangeCategory(event) {
+        this.setState({category: event.target.category});
+    }
 
     handleSubmit(event) {
         // alert('A name was submitted: ' + this.state.vocab + this.state.keyword);
@@ -35,6 +41,7 @@ class Search extends React.Component {
         this.loadDoc();
         this.props.changeVocab(this.state.vocab);
         this.props.changeKeyword(this.state.keyword);
+        this.props.changeCategory(this.state.category);
         this.props.changePage('SearchResults')
     }
 
@@ -48,7 +55,7 @@ class Search extends React.Component {
         let vocab = this.state.vocab;
         let keyword = this.state.keyword;
         // 逆にしてる
-        xhttp.open("GET", "https://manatube.azurewebsites.net/api/search?q=" + keyword + "&k=" + vocab, true);
+        xhttp.open("GET", "https://manatube.azurewebsites.net/api/search?q=" + keyword + "&k=" + vocab , true);
         xhttp.send();
     }
 
@@ -76,29 +83,28 @@ class Search extends React.Component {
                                        value={this.state.value} onChange={this.handleChangeVocab}/>
                             </div>
 
-                            <div className="form-group col-xs-offset-0 col-xs-12 col-md-offset-2 col-md-8">
-                                <h3>Keyword on Youtube</h3>
-                                {/*<input className="form-control" type="text" placeholder="e.g. katy perry" ref="keyword"/>*/}
-                                <input className="form-control" placeholder="e.g. this" type="text"
-                                       value={this.state.value} onChange={this.handleChangeKeyword}/>
+                            {/*<div className="form-group col-xs-offset-0 col-xs-12 col-md-offset-2 col-md-8">*/}
+                                {/*<h3>Keyword on Youtube</h3>*/}
+                                {/*/!*<input className="form-control" type="text" placeholder="e.g. katy perry" ref="keyword"/>*!/*/}
+                                {/*<input className="form-control" placeholder="e.g. this" type="text"*/}
+                                       {/*value={this.state.value} onChange={this.handleChangeKeyword}/>*/}
 
-                            </div>
+                            {/*</div>*/}
 
                             <div className="form-group col-xs-offset-0 col-xs-12 col-md-offset-2 col-md-8">
                                 <h3>Category</h3>
                                 <div className="sample">
-                                    <input type="radio" name="s1" id="select1" value="1" checked="checked"/>
+                                    <input type="radio" name="s1" id="select1" value="1" checked={this.state.radio === 'a'} onChange={() => this.setState({radio: 'a', category:'10'})}/>
                                     <label htmlFor="select1">Music</label>
-                                    <input type="radio" name="s2" id="select2" value="2"/>
-                                    <label htmlFor="select2">Movie</label>
-                                    <input type="radio" name="s3" id="select3" value="3"/>
-                                    <label htmlFor="select3">Anime</label>
-                                    <input type="radio" name="s4" id="select4" value="4"/>
-                                    <label htmlFor="select4">Game</label>
-                                    <input type="radio" name="s5" id="select5" value="5"/>
-                                    <label htmlFor="select5">TED</label>
-                                    <input type="radio" name="s6" id="select6" value="6"
-                                           onClick={() => this.OnClickChange()}/>
+                                    <input type="radio" name="s2" id="select2" value="2" checked={this.state.radio === 'b'} onChange={() => this.setState({radio: 'b', category:'23'})}/>
+                                    <label htmlFor="select2">Comedy</label>
+                                    <input type="radio" name="s3" id="select3" value="3" checked={this.state.radio === 'c'} onChange={() => this.setState({radio: 'c', category:'24'})}/>
+                                    <label htmlFor="select3">Entertainment</label>
+                                    <input type="radio" name="s4" id="select4" value="4" checked={this.state.radio === 'd'} onChange={() => this.setState({radio: 'd', category:'25'})}/>
+                                    <label htmlFor="select4">News</label>
+                                    <input type="radio" name="s5" id="select5" value="5" checked={this.state.radio === 'e'} onChange={() => this.setState({radio: 'e', category:'28'})}/>
+                                    <label htmlFor="select5">Science & Technology</label>
+                                    <input type="radio" name="s6" id="select6" value="6" checked={this.state.radio === 'f'} onChange={() => this.setState({radio: 'f'})} onClick={() => this.OnClickChange()}/>
                                     <label htmlFor="select6">Keyword</label>
                                 </div>
                             </div>
@@ -118,6 +124,8 @@ class Search extends React.Component {
                                 </h1>
                             </div>
                         </form>
+                        <h4>閲覧履歴</h4>
+                        <VideoHistory/>
                     </div>
                 </div>
             </div>
