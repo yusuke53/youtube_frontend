@@ -78,7 +78,7 @@ class Search extends React.Component {
     render() {
         return (
             <div className={"search"}>
-                <div className="main">
+                <div className="main2">
                 <Transition
                     native
                     from={{opacity: 0, transform: 'translate3d(100%,0,0)'}}
@@ -155,6 +155,7 @@ class Search extends React.Component {
                         </form>
                         <h4>閲覧履歴</h4>
                     </div>
+                 </div>
             </div>
 
         )
