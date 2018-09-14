@@ -2,6 +2,7 @@ import React from 'react';
 import '../css/search.css';
 import Button from '@material-ui/core/Button';
 import { Transition, animated } from 'react-spring';
+import VideoHistory from "./VideoHistory";
 
 const pages = [
     style => <animated.div style={{ ...style, background: '#247BA0' }}>A</animated.div>,
@@ -113,17 +114,17 @@ class Search extends React.Component {
                             <div className="form-group col-xs-offset-0 col-xs-12 col-md-offset-2 col-md-8">
                                 <h3>Category</h3>
                                 <div className="sample">
-                                    <input type="radio" name="s1" id="select1" value="1" checked={this.state.radio === 'a'} onChange={() => this.setState({radio: 'a', category:'10'})}/>
+                                    <input type="radio" name="s1" id="select1" value="1" checked={this.state.radio === 'a'} onClick={() => this.setState({radio: (this.state.radio !== 'a') ? 'a' : '', category:'10'})}/>
                                     <label htmlFor="select1">Music</label>
-                                    <input type="radio" name="s2" id="select2" value="2" checked={this.state.radio === 'b'} onChange={() => this.setState({radio: 'b', category:'23'})}/>
+                                    <input type="radio" name="s2" id="select2" value="2" checked={this.state.radio === 'b'} onClick={() => this.setState({radio: (this.state.radio !== 'b') ? 'b' : '', category:'23'})}/>
                                     <label htmlFor="select2">Comedy</label>
-                                    <input type="radio" name="s3" id="select3" value="3" checked={this.state.radio === 'c'} onChange={() => this.setState({radio: 'c', category:'24'})}/>
+                                    <input type="radio" name="s3" id="select3" value="3" checked={this.state.radio === 'c'} onClick={() => this.setState({radio: (this.state.radio !== 'c') ? 'c' : '', category:'24'})}/>
                                     <label htmlFor="select3">Entertainment</label>
-                                    <input type="radio" name="s4" id="select4" value="4" checked={this.state.radio === 'd'} onChange={() => this.setState({radio: 'd', category:'25'})}/>
+                                    <input type="radio" name="s4" id="select4" value="4" checked={this.state.radio === 'd'} onClick={() => this.setState({radio: (this.state.radio !== 'd') ? 'd' : '', category:'25'})}/>
                                     <label htmlFor="select4">News</label>
-                                    <input type="radio" name="s5" id="select5" value="5" checked={this.state.radio === 'e'} onChange={() => this.setState({radio: 'e', category:'28'})}/>
+                                    <input type="radio" name="s5" id="select5" value="5" checked={this.state.radio === 'e'} onClick={() => this.setState({radio: (this.state.radio !== 'e') ? 'e' : '', category:'28'})}/>
                                     <label htmlFor="select5">Science & Technology</label>
-                                    <input type="radio" name="s6" id="select6" value="6" checked={this.state.radio === 'f'} onChange={() => this.setState({radio: 'f'})} onClick={() => this.OnClickChange()}/>
+                                    <input type="radio" name="s6" id="select6" value="6" checked={this.state.radio === 'f'} onClick={() => this.setState({radio: (this.state.radio !== 'f') ? 'f' : ''})} onClick={() => this.OnClickChange()}/>
                                     <label htmlFor="select6">Keyword</label>
                                 </div>
                             </div>
@@ -145,6 +146,7 @@ class Search extends React.Component {
                             </div>
                         </form>
                         <h4>閲覧履歴</h4>
+                        <VideoHistory/>
                     </div>
                 </div>
             </div>

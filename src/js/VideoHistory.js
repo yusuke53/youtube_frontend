@@ -10,8 +10,25 @@ function gethistoryvideoIdAll(obj) {
 
     return historyvideoIds;
 }
+function gethistorywordAll(obj) {
+    var historywords = [];
+
+    for(var i=0; i<obj.length; i++){
+        historywords[i] = obj[i].word;
+    }
+
+    return historywords;
+}
 
 class VideoHistory extends React.Component {
+    constructor(props){
+        super(props)
+        this.state = {
+            historywords : [],
+            historyvideoIds : [],
+            all : []
+        };
+    }
     componentDidMount() {
         var xhttp = new XMLHttpRequest();
         var self = this;
@@ -21,26 +38,28 @@ class VideoHistory extends React.Component {
                 let response = JSON.parse(this.responseText);
                 console.log(response);
                 let historyvideoIds = gethistoryvideoIdAll(response);
+                let historywords = gethistorywordAll(response);
                 let all = []
                 for(var i=0; i<historyvideoIds.length; i++){
-                    all.push([historyvideoIds[i]])
+                    all.push([historyvideoIds[i],historywords[i]])
                 }
+                console.log(all)
                 self.setState({
+                    historywords : historywords,
                     historyvideoIds : historyvideoIds,
-                    all : all,
-                    loading : false
+                    all : all
                 })
             }
         };
-        let vocab = this.props.vocab;
-        let keyword = this.props.keyword;
-        xhttp.open("GET", "https://manatube.azurewebsites.net/api/search?q=" + keyword + "&k=" + vocab, true);
+        xhttp.open("GET", "https://manatube.azurewebsites.net/api/history", true);
         xhttp.send();
     }
     render() {
         return (
             <div className={"videohistory"}>
-
+                {this.state.all.map((all) => {
+                    word:{all[1]}
+                })}
             </div>
         )
     }
