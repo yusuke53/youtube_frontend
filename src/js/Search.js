@@ -2,7 +2,13 @@ import React from 'react';
 import '../css/search.css';
 
 import Button from '@material-ui/core/Button';
+import { Transition, animated } from 'react-spring';
 
+const pages = [
+    style => <animated.div style={{ ...style, background: '#247BA0' }}>A</animated.div>,
+    style => <animated.div style={{ ...style, background: '#B2DBBF' }}>B</animated.div>,
+    style => <animated.div style={{ ...style, background: '#12DBBF' }}>C</animated.div>
+]
 
 class Search extends React.Component {
     constructor(props) {
@@ -10,7 +16,8 @@ class Search extends React.Component {
         this.state = {
             vocab: '',
             keyword: '',
-            formFlg: false
+            formFlg: false,
+            index: 0
         };
 
         this.handleChangeVocab = this.handleChangeVocab.bind(this);
@@ -53,9 +60,23 @@ class Search extends React.Component {
         xhttp.send();
     }
 
+    toggle = e => this.setState(state => ({ index: state.index === 2 ? 0 : state.index + 1 }))
+
     render() {
         return (
             <div className={"search"}>
+
+                <div className="main" onClick={this.toggle}>
+                    <Transition
+                        native
+                        from={{ opacity: 0, transform: 'translate3d(100%,0,0)' }}
+                        enter={{ opacity: 1, transform: 'translate3d(0%,0,0)' }}
+                        leave={{ opacity: 0, transform: 'translate3d(-50%,0,0)' }}>
+                        {pages[this.state.index]}
+                    </Transition>
+                </div>
+
+
                 <div className="header col-xs-12">
 
 
@@ -90,7 +111,7 @@ class Search extends React.Component {
                                 <h3>Category</h3>
                                 <div className="sample">
                                     <input type="radio" name="s1" id="select1" value="1" checked="checked"/>
-                                    <label htmlFor="select1">Music</label>
+                                    <label htmlFor="select1" onClick={this.toggle}>Music</label>
                                     <input type="radio" name="s2" id="select2" value="2"/>
                                     <label htmlFor="select2">Movie</label>
                                     <input type="radio" name="s3" id="select3" value="3"/>
@@ -104,6 +125,7 @@ class Search extends React.Component {
                                     <label htmlFor="select6">Keyword</label>
                                 </div>
                             </div>
+
                             <div className="form-group col-xs-offset-0 col-xs-12 col-md-offset-2 col-md-8"
                                  style={{display: this.state.formFlg ? '' : 'none'}}>
                                 <h3>Keyword on Youtube</h3>
