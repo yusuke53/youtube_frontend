@@ -154,7 +154,13 @@ br {
     align-items: center;
     color: white;
     font-family: Kanit, sans-serif;
-    font-weight: 800;
-    font-size: 26em;
+    font-weight: 500;
+    font-size: 15em;
     will-change: transform, opacity;
+
+}
+
+.sample label:hover{
+    cursor: pointer;
+    opacity: 0.6;
 }
