@@ -2,7 +2,6 @@ import React from 'react';
 import '../css/player.css';
 import YouTube from "react-youtube";
 import {ProgressCircular} from "react-onsenui";
-import NavBar from "./mobile/NavBar";
 
 function getdurationAll(obj) {
     var durations = [];
