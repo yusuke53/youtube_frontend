@@ -69,95 +69,98 @@ class Search extends React.Component {
         return (
 
 
-                <Page>
-                    <Toolbar>
-                        <div
-                            className="center"
-                        >
-                            Youtube Word Search
-                        </div>
-                    </Toolbar>
-                    {/*toolbar*/}
-                    <div className="header col-xs-12">
-                        <img src="pictures/ManaTube.png" className={"ManaTube_left"} alt={"manatubeleft"}/>
-                        <h1 className="text-center"><span className={"f"}>F</span>ind <span
-                            className={"w"}>W</span>ords <span className={"o"}>O</span>n <span className={"y"}>Y</span>outube!
-                        </h1>
+            <Page>
+                <Toolbar>
+                    <div
+                        className="center"
+                    >
+                        Youtube Word Search
                     </div>
-                    <div className="contents col-xs-offset-1 col-xs-10">
-                        <div className="col-xs-12">
-                            <form onSubmit={this.handleSubmit}>
-                                <div className="form-group col-xs-offset-0 col-xs-12 col-md-offset-2 col-md-8">
-                                    {/*<h3>Searching Vocab</h3>*/}
+                </Toolbar>
+                {/*toolbar*/}
+                <div className="header col-xs-12">
+                    <img src="pictures/ManaTube.png" className={"ManaTube_left"} alt={"manatubeleft"}/>
+                    <h1 className="text-center"><span className={"f"}>F</span>ind <span
+                        className={"w"}>W</span>ords <span className={"o"}>O</span>n <span className={"y"}>Y</span>outube!
+                    </h1>
+                </div>
+                <div className="contents col-xs-offset-1 col-xs-10">
+                    <div className="col-xs-12">
+                        <form onSubmit={this.handleSubmit}>
+                            <div className="form-group col-xs-offset-0 col-xs-12 col-md-offset-2 col-md-8">
+                                {/*<h3>Searching Vocab</h3>*/}
 
-                                    <input className="form-control" placeholder="Vocab (apple, car, etc..)" type="text"
-                                           value={this.state.value} onChange={this.handleChangeVocab}/>
-                                </div>
+                                <input className="form-control" placeholder="Vocab (apple, car, etc..)" type="text"
+                                       value={this.state.value} onChange={this.handleChangeVocab}/>
+                            </div>
 
-                                {/*<div className="form-group col-xs-offset-0 col-xs-12 col-md-offset-2 col-md-8">*/}
-                                    {/*<h3>Keyword on Youtube</h3>*/}
-                                    {/*/!*<input className="form-control" type="text" placeholder="e.g. katy perry" ref="keyword"/>*!/*/}
-                                    {/*<input className="form-control" placeholder="e.g. this" type="text"*/}
-                                           {/*value={this.state.value} onChange={this.handleChangeKeyword}/>*/}
+                            {/*<div className="form-group col-xs-offset-0 col-xs-12 col-md-offset-2 col-md-8">*/}
+                            {/*<h3>Keyword on Youtube</h3>*/}
+                            {/*/!*<input className="form-control" type="text" placeholder="e.g. katy perry" ref="keyword"/>*!/*/}
+                            {/*<input className="form-control" placeholder="e.g. this" type="text"*/}
+                            {/*value={this.state.value} onChange={this.handleChangeKeyword}/>*/}
 
-                                {/*</div>*/}
+                            {/*</div>*/}
 
-                                <div className="form-group col-xs-offset-0 col-xs-12 col-md-offset-2 col-md-8" style={{ display: this.state.formFlg ? '' : 'none' }}>
-                                    {/*<h3>Keyword on Youtube</h3>*/}
-                                    {/*<input className="form-control" type="text" placeholder="e.g. katy perry" ref="keyword"/>*/}
-                                    <input className="form-control" placeholder="Youtube Keyword (Rakuten, etc)" type="text" value={this.state.value} onChange={this.handleChangeKeyword} />
-                                </div>
-                                <div className="col-xs-offset-0 col-xs-12 col-md-offset-2 col-md-8">
+                            <div className="form-group col-xs-offset-0 col-xs-12 col-md-offset-2 col-md-8"
+                                 style={{display: this.state.formFlg ? '' : 'none'}}>
+                                {/*<h3>Keyword on Youtube</h3>*/}
+                                {/*<input className="form-control" type="text" placeholder="e.g. katy perry" ref="keyword"/>*/}
+                                <input className="form-control" placeholder="Youtube Keyword (Rakuten, etc)" type="text"
+                                       value={this.state.value} onChange={this.handleChangeKeyword}/>
+                            </div>
+                            <div className="col-xs-offset-1 col-xs-10 col-md-offset-2 col-md-8">
                                 <p className="text-center">
-                                <div className="sample">
-                                                                        <Button className="button--large--cta"  color="primary"  type="submit" variant="extendedFab" aria-label="Delete">
-                                                                            Search けんさく
-                                                                        </Button>
-                                                                        </div>
-                                                                    </p>
-
-                                                                    </div>
-                                <div className="form-group col-xs-offset-0 col-xs-12 col-md-offset-2 col-md-8">
-
-                                    <h3>Category</h3>
                                     <div className="sample">
-                                        <ListItem>
-                                            <Switch/> Music
-                                        </ListItem>
-                                        <ListItem>
-                                            <Switch/> Movie
-                                        </ListItem>
-                                        <ListItem>
-                                            <Switch/> Anime
-                                        </ListItem>
-                                        <ListItem>
-                                            <Switch/> Game
-                                        </ListItem>
-                                        <ListItem>
-                                            <Switch/> TED
-                                        </ListItem>
-                                        <ListItem>
-                                            <Switch onChange={() => this.OnClickChange()}/> Keyword
-                                        </ListItem>
-
-
+                                        <Button className="button button--outline" color="primary" type="submit"
+                                                variant="extendedFab" aria-label="Delete">
+                                            Search けんさく
+                                        </Button>
                                     </div>
-                                </div>
-                                <div className="form-group col-xs-offset-0 col-xs-12 col-md-offset-2 col-md-8"
-                                     style={{display: this.state.formFlg ? '' : 'none'}}>
-                                    <h3>Keyword on Youtube</h3>
-                                    {/*<input className="form-control" type="text" placeholder="e.g. katy perry" ref="keyword"/>*/}
-                                    <input className="form-control" placeholder="e.g. this" type="text"
-                                           value={this.state.value} onChange={this.handleChangeKeyword}/>
-                                </div>
-                                <div className="col-xs-offset-0 col-xs-12 col-md-offset-2 col-md-8">
-                                    {/*<button type="submit" className="btn btn-success btn-block">Search けんさく</button>*/}
+                                </p>
+
+                            </div>
+                            <div className="form-group col-xs-offset-0 col-xs-12 col-md-offset-2 col-md-8">
+
+                                <h3>Category</h3>
+                                <div className="sample">
+                                    <ListItem>
+                                        <Switch/> Music
+                                    </ListItem>
+                                    <ListItem>
+                                        <Switch/> Movie
+                                    </ListItem>
+                                    <ListItem>
+                                        <Switch/> Anime
+                                    </ListItem>
+                                    <ListItem>
+                                        <Switch/> Game
+                                    </ListItem>
+                                    <ListItem>
+                                        <Switch/> TED
+                                    </ListItem>
+                                    <ListItem>
+                                        <Switch onChange={() => this.OnClickChange()}/> Keyword
+                                    </ListItem>
+
 
                                 </div>
-                            </form>
-                        </div>
+                            </div>
+                            <div className="form-group col-xs-offset-0 col-xs-12 col-md-offset-2 col-md-8"
+                                 style={{display: this.state.formFlg ? '' : 'none'}}>
+                                <h3>Keyword on Youtube</h3>
+                                {/*<input className="form-control" type="text" placeholder="e.g. katy perry" ref="keyword"/>*/}
+                                <input className="form-control" placeholder="e.g. this" type="text"
+                                       value={this.state.value} onChange={this.handleChangeKeyword}/>
+                            </div>
+                            <div className="col-xs-offset-0 col-xs-12 col-md-offset-2 col-md-8">
+                                {/*<button type="submit" className="btn btn-success btn-block">Search けんさく</button>*/}
+
+                            </div>
+                        </form>
                     </div>
-                </Page>
+                </div>
+            </Page>
 
 
         )
