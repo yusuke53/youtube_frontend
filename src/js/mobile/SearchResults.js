@@ -1,14 +1,14 @@
 import React from 'react';
 import '../../css/searchresults.css';
-
+import ons from 'onsenui';
 import {
     Page,
     ListItem,
     Card,
-    ProgressCircular
+    ProgressCircular, Toolbar,
+    BackButton
 } from 'react-onsenui';
 
-import NavBar from './NavBar';
 
 function getThumbnailAll(obj) {
     var thumbnails = [];
@@ -49,20 +49,25 @@ function getvideoIdAll(obj) {
 }
 
 const imageStyle ={
-    width : "100%",
+    width : "90%",
 }
 
 class SearchResults extends React.Component {
     constructor(props){
         super(props)
+         const isIOS = ons.platform.isIOS();
         this.state = {
             thumbnails: [],
             titles : [],
             wordHitCounts : [],
             videoIds : [],
             all : [],
-            loading : true
+            loading : true,
+            width: window.innerWidth,
+              height: isIOS ? '' : '100%',
+              scrolling: isIOS ? 'no' : 'yes',
         };
+        this.backPage = this.backPage.bind(this)
     }
 
     componentDidMount() {
@@ -109,12 +114,30 @@ class SearchResults extends React.Component {
         this.props.changePage('Player')
     }
 
+    backPage(){
+        this.props.changePage('Search')
+    }
+
 
     render() {
         const { loading } = this.state;
         if (loading) return(
             <div>
-                <Page renderToolbar={() => <NavBar title='Search Results'/>}>
+                <Page>
+                    <Toolbar>
+                        <div
+                            className="center"
+                        >
+                            Search Results
+                        </div>
+                        <div
+                            className="left"
+                        >
+                            <BackButton onClick={() => {this.props.changePage('Search')}}>
+
+                            </BackButton>
+                        </div>
+                    </Toolbar>
                     <div style={{display: 'flex',  justifyContent:'center', alignItems:'center', height: '100vh'}}>
                         <ProgressCircular indeterminate />
                     </div>
@@ -123,25 +146,37 @@ class SearchResults extends React.Component {
         )
         return (
             <div className={"searchresults"}>
-                <Page renderToolbar={() => <NavBar title='Search Results'/>}>
+                <Page>
+                    <Toolbar>
+                        <div
+                            className="center"
+                        >
+                            Search Results
+                        </div>
+                        <div
+                            className="left"
+                        >
+                            <BackButton onClick={() => {this.props.changePage('Search')}}>
+                            </BackButton>
+                        </div>
+                    </Toolbar>
                     <div className="header">
                     </div>
                     <div className="main">
                         {this.state.all.map((all) => {
                             return (
                                 <div className="row">
-                                    <div className="col-xs-12">
+                                    <div className="col-xs-11">
                                         <a onClick={() => this.sendVideoId(all[3])}>
                                             <Card>
                                                 <ListItem>
-                                                    <img src={all[0]} style={imageStyle}></img>
-
+                                                    <img src={all[0]} style={imageStyle} alt={"imagedisp"}></img>
                                                 </ListItem>
                                             </Card>
                                             <ListItem>
                                                 <div className="col-xs-9">
-                                                    <h3>{all[1]}</h3>
-                                                    <h3>含んでるワードの数：{all[2]}</h3>
+                                                    {all[1]}
+                                                    含んでるワードの数：{all[2]}
                                                 </div>
                                             </ListItem>
                                         </a>
@@ -150,7 +185,6 @@ class SearchResults extends React.Component {
                             )
                         })}
                     </div>
-                    {this.state.a}
                 </Page>
             </div>
         )

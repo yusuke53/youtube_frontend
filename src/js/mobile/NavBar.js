@@ -1,16 +1,16 @@
 import React from 'react';
 
-import {
-    Toolbar,
-    BackButton
-} from 'react-onsenui';
+class NavApp extends React.Component {
 
-const NavApp = ({title}) => (
-    <Toolbar>
-        <div className='left'>
-        </div>
-        <div className='center'>{title}</div>
-    </Toolbar>
-);
+
+    render() {
+        return (
+            <div className={"navapp"}>
+
+            </div>
+        )
+    }
+}
+
 
 export default NavApp;
