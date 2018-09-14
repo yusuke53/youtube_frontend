@@ -109,12 +109,20 @@ class SearchResults extends React.Component {
                     videoIds : videoIds,
                     all : all,
                     loading : false
-                })
+                });
             }
         }
         let vocab = this.props.vocab;
         let keyword = this.props.keyword;
-        xhttp.open("GET", "https://manatube.azurewebsites.net/api/search?q=" + keyword + "&k=" + vocab + "&maxResults=10", true);
+        let category = this.props.category;
+        if(category===""){
+            xhttp.open("GET", "https://manatube.azurewebsites.net/api/search?q=" + keyword + "&k=" + vocab + "&maxResults=10", true);
+            console.log("no category");
+        }else{
+            xhttp.open("GET", "https://manatube.azurewebsites.net/api/search//category?categoryId=" + category + "&k=" + vocab + "&maxResults=10", true);
+            console.log("おるでい");
+        }
+
         xhttp.send();
     }
 
