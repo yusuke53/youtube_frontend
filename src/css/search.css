@@ -119,31 +119,31 @@ body,
     margin: 0;
     padding: 0;
 }
-html,
-body,
-div,
-a,
-i,
-button,
-select,
-option,
-optgroup,
-hr,
-br {
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    cursor: default;
-}
+/*html,*/
+/*body,*/
+/*div,*/
+/*a,*/
+/*i,*/
+/*button,*/
+/*select,*/
+/*option,*/
+/*optgroup,*/
+/*hr,*/
+/*br {*/
+    /*-webkit-touch-callout: none;*/
+    /*-webkit-user-select: none;*/
+    /*-khtml-user-select: none;*/
+    /*-moz-user-select: none;*/
+    /*-ms-user-select: none;*/
+    /*user-select: none;*/
+    /*cursor: default;*/
+/*}*/
 
-#root {
-    background: #dfdfdf;
-}
+/*#root {*/
+    /*background: #dfdfdf;*/
+/*}*/
 
-.main > div {
+.main2 > div {
     cursor: pointer;
     position: absolute;
     width: 100%;
