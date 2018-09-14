@@ -70,15 +70,15 @@ class Search extends React.Component {
         return (
             <div className={"search"}>
 
-                <div className="main" onClick={this.toggle}>
-                    <Transition
-                        native
-                        from={{ opacity: 0, transform: 'translate3d(100%,0,0)' }}
-                        enter={{ opacity: 1, transform: 'translate3d(0%,0,0)' }}
-                        leave={{ opacity: 0, transform: 'translate3d(-50%,0,0)' }}>
-                        {pages[this.state.index]}
-                    </Transition>
-                </div>
+                {/*<div className="main" onClick={this.toggle}>*/}
+                    {/*<Transition*/}
+                        {/*native*/}
+                        {/*from={{ opacity: 0, transform: 'translate3d(100%,0,0)' }}*/}
+                        {/*enter={{ opacity: 1, transform: 'translate3d(0%,0,0)' }}*/}
+                        {/*leave={{ opacity: 0, transform: 'translate3d(-50%,0,0)' }}>*/}
+                        {/*{pages[this.state.index]}*/}
+                    {/*</Transition>*/}
+                {/*</div>*/}
 
 
                 <div className="header col-xs-12">
@@ -145,7 +145,6 @@ class Search extends React.Component {
                             </div>
                         </form>
                         <h4>閲覧履歴</h4>
-                        <VideoHistory/>
                     </div>
                 </div>
             </div>
