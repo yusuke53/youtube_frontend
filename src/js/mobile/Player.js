@@ -126,7 +126,9 @@ class Player extends React.Component{
         const opts = {
             width: '100%',
             playerVars: { // https://developers.google.com/youtube/player_parameters
-                autoplay: 1
+                autoplay: 0,
+                cc_load_policy: 1,
+                rel:0
             }
         };
         return(
@@ -140,16 +142,12 @@ class Player extends React.Component{
                         onReady={this.onReady}
                         opts={opts}
                     />
-                    <button onClick={this.onPlayVideo}>Play</button>
-                    <button onClick={this.onPauseVideo}>Pause</button>
-
                     <h3>List of texts that have : {this.props.vocab}</h3>
                     {this.state.all.map((all) => {
                         return (
                             <div>
                                 <button onClick={()=>this.onChangeStartVideo(all)}>
                                     <p>start:{all[0]} {all[1]}</p>
-
                                 </button>
                             </div>
                         )

@@ -2,6 +2,13 @@ import React from 'react';
 import '../css/player.css';
 import YouTube from "react-youtube";
 import {Page, ProgressCircular} from "react-onsenui";
+
+// 字幕用
+// import Ball from './static/Ball';
+// import DeltaTimeManager from './static/DeltaTimeManager';
+// import Main from './static/Main';
+// import PhraseManager from './static/PhraseManager';
+
 import NavBar from "./mobile/NavBar";
 
 
@@ -122,7 +129,9 @@ class Player extends React.Component{
             height: '390',
             width: '640',
             playerVars: { // https://developers.google.com/youtube/player_parameters
-                autoplay: 1
+                autoplay: 0,
+                cc_load_policy: 1,
+                rel:0,
             }
         };
         return(
@@ -158,8 +167,6 @@ class Player extends React.Component{
                         onReady={this.onReady}
                         opts={opts}
                     />
-                    <button onClick={this.onPlayVideo}>Play</button>
-                    <button onClick={this.onPauseVideo}>Pause</button>
                 </div>
             </div>
         )
