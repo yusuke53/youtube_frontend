@@ -1,6 +1,5 @@
 import React from 'react';
 import '../css/search.css';
-
 import Button from '@material-ui/core/Button';
 
 
@@ -73,7 +72,6 @@ class Search extends React.Component {
                             <div className="form-group col-xs-offset-0 col-xs-12 col-md-offset-2 col-md-8">
 
                                 <h3>Searching Vocab</h3>
-
                                 <input className="form-control" placeholder="e.g. this" type="text"
                                        value={this.state.value} onChange={this.handleChangeVocab}/>
                             </div>
