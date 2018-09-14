@@ -109,3 +109,52 @@ img.ManaTube_right:hover{
   color: red;
   display: none;
 }
+
+/*react-springによるカテゴリー変化*/
+
+html,
+body,
+#root {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+html,
+body,
+div,
+a,
+i,
+button,
+select,
+option,
+optgroup,
+hr,
+br {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    cursor: default;
+}
+
+#root {
+    background: #dfdfdf;
+}
+
+.main > div {
+    cursor: pointer;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-family: Kanit, sans-serif;
+    font-weight: 800;
+    font-size: 26em;
+    will-change: transform, opacity;
+}
