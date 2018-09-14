@@ -5,7 +5,10 @@ import YouTube from "react-youtube";
 import {
     BackButton,
     Page,
-    ProgressCircular, Toolbar
+    ProgressCircular,
+    Toolbar,
+    List,
+    ListItem
 } from 'react-onsenui';
 
 function getdurationAll(obj) {
@@ -118,77 +121,95 @@ class Player extends React.Component {
         const {loading} = this.state;
         if (loading) return (
 //            <div>
-                <Page>
-                    <Toolbar>
-                        <div
-                            className="center"
-                        >
-                            Details
-                        </div>
-                        <div
-                            className="left"
-                        >
-                            <BackButton onClick={() => {
-                                this.props.changePage('SearchResults')
-                            }}>
-                            </BackButton>
-                        </div>
-                    </Toolbar>
-                    <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh'}}>
-                        <ProgressCircular indeterminate/>
+            <Page>
+                <Toolbar>
+                    <div
+                        className="center"
+                    >
+                        Details
                     </div>
-                </Page>
+                    <div
+                        className="left"
+                    >
+                        <BackButton onClick={() => {
+                            this.props.changePage('SearchResults')
+                        }}>
+                        </BackButton>
+                    </div>
+                </Toolbar>
+                <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh'}}>
+                    <ProgressCircular indeterminate/>
+                </div>
+            </Page>
 //            </div>
         )
         const opts = {
-            width: '90%',
+            width: '100%',
             playerVars: { // https://developers.google.com/youtube/player_parameters
                 autoplay: 0,
                 cc_load_policy: 1,
-                rel:0
+                rel: 0
             }
         };
         return (
 //            <div className={"player"}>
-                <Page>
-                    <Toolbar>
-                        <div
-                            className="center"
-                        >
-                            Details
-                        </div>
-                        <div
-                            className="left"
-                        >
-                            <BackButton onClick={() => {
-                                this.props.changePage('SearchResults')
-                            }}>
-                            </BackButton>
-                        </div>
-                    </Toolbar>
-                    <div className="header">
+            <Page>
+                <Toolbar>
+                    <div
+                        className="center"
+                    >
+                        Details
                     </div>
-                    <div className="main col-xs-8">
+                    <div
+                        className="left"
+                    >
+                        <BackButton onClick={() => {
+                            this.props.changePage('SearchResults')
+                        }}>
+                        </BackButton>
+                    </div>
+                </Toolbar>
+                <div className="header">
+                </div>
+                <div className="contents col-xs-12">
+                    {/*<div className="main col-xs-8">*/}
                     <YouTube
                         videoId={this.props.videoId}
                         onReady={this.onReady}
                         opts={opts}
                     />
+                    {/*</div>*/}
+                    <div className="text-center">
+                        <h3>List of texts that have : {this.props.vocab}</h3>
+                        <h3>Tap ↓</h3>
                     </div>
-                    <h3>List of texts that have : {this.props.vocab}</h3>
-                    {this.state.all.map((all) => {
-                        return (
-                            <div>
-                                <button onClick={() => this.onChangeStartVideo(all)}>
-                                    <p>start:{all[0]} {all[1]}</p>
-                                </button>
-                            </div>
-                        )
-                    })}
-                </Page>
+                    <List>
+                        {this.state.all.map((all) => {
+                            return (
+                                <div>
+                                    <ListItem onClick={() => this.onChangeStartVideo(all)}>
+                                        <div className="list-item__center">
+                                            <div className="list-item__title">
+                                                Start:{all[0]}
+                                            </div>
+                                            <div className="list-item__subtitle">
+                                                {all[1]}
+                                            </div>
+                                        </div>
+                                    </ListItem>
 
-//            </div>
-        )
+                                    {/*<button onClick={() => this.onChangeStartVideo(all)}>*/}
+                                    {/*<p>start:{all[0]} {all[1]}</p>*/}
+                                    {/*</button>*/}
+                                </div>
+                            )
+                        })}
+                    </List>
+                </div>
+            </Page>
+
+    //            </div>
+    )
     }
 }
 

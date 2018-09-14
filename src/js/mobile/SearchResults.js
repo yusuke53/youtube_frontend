@@ -9,6 +9,13 @@ import {
     BackButton
 } from 'react-onsenui';
 
+// const styles = StyleSheet.create({
+//     bigblue: {
+//         color: 'blue',
+//         fontWeight: 'bold',
+//         fontSize: 30,
+//     },
+// });
 
 function getThumbnailAll(obj) {
     var thumbnails = [];
@@ -50,6 +57,8 @@ function getvideoIdAll(obj) {
 
 const imageStyle ={
     width : "90%",
+    "margin-left" : "auto",
+    "margin-right" : "auto"
 }
 
 class SearchResults extends React.Component {
@@ -100,12 +109,20 @@ class SearchResults extends React.Component {
                     videoIds : videoIds,
                     all : all,
                     loading : false
-                })
+                });
             }
         }
         let vocab = this.props.vocab;
         let keyword = this.props.keyword;
-        xhttp.open("GET", "https://manatube.azurewebsites.net/api/search?q=" + keyword + "&k=" + vocab, true);
+        let category = this.props.category;
+        if(category===""){
+            xhttp.open("GET", "https://manatube.azurewebsites.net/api/search?q=" + keyword + "&k=" + vocab + "&maxResults=10", true);
+            console.log("no category");
+        }else{
+            xhttp.open("GET", "https://manatube.azurewebsites.net/api/search//category?categoryId=" + category + "&k=" + vocab + "&maxResults=10", true);
+            console.log("おるでい");
+        }
+
         xhttp.send();
     }
 
@@ -166,11 +183,11 @@ class SearchResults extends React.Component {
                         {this.state.all.map((all) => {
                             return (
                                 <div className="row">
-                                    <div className="col-xs-11">
+                                    <div className="col-xs-offset-0 col-xs-12 col-md-offset-2 col-md-8">
                                         <a onClick={() => this.sendVideoId(all[3])}>
                                             <Card>
                                                 <ListItem>
-                                                    <img src={all[0]} style={imageStyle} alt={"imagedisp"}></img>
+                                                    <img className="text-center" src={all[0]} style={imageStyle} alt={"imagedisp"}></img>
                                                 </ListItem>
                                             </Card>
                                             <ListItem>
