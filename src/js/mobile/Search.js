@@ -22,17 +22,19 @@ class Search extends React.Component {
         this.state = {
             vocab: '',
             keyword: '',
+            category: '',
             formFlg: false,
-            isExpanded: true
+            radio: "",
         };
 
         this.handleChangeVocab = this.handleChangeVocab.bind(this);
         this.handleChangeKeyword = this.handleChangeKeyword.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleChangeCategory = this.handleChangeCategory.bind(this);
     }
 
     OnClickChange() {
-        this.setState({formFlg: !this.state.formFlg})
+        this.setState({formFlg: !this.state.formFlg, radio : 'f'})
     }
 
     handleChangeVocab(event) {
@@ -43,12 +45,17 @@ class Search extends React.Component {
         this.setState({keyword: event.target.value});
     }
 
+    handleChangeCategory(event) {
+        this.setState({category: event.target.category});
+    }
+
     handleSubmit(event) {
         // alert('A name was submitted: ' + this.state.vocab + this.state.keyword);
         event.preventDefault();
         this.loadDoc();
         this.props.changeVocab(this.state.vocab);
         this.props.changeKeyword(this.state.keyword);
+        this.props.changeCategory(this.state.category);
         this.props.changePage('SearchResults')
     }
 
@@ -115,22 +122,22 @@ class Search extends React.Component {
                                 <h3>Category</h3>
                                 <div className="sample">
                                     <ListItem>
-                                        <Switch/> Music
+                                        <Switch name="s1" id="select1" value="1" checked={this.state.radio === 'a'} onChange={() => this.setState({radio: 'a', category:'10'})}/> Music
                                     </ListItem>
                                     <ListItem>
-                                        <Switch/> Movie
+                                        <Switch name="s2" id="select2" value="2" checked={this.state.radio === 'b'} onChange={() => this.setState({radio: 'b', category:'23'})}/> Comedy
                                     </ListItem>
                                     <ListItem>
-                                        <Switch/> Anime
+                                        <Switch name="s3" id="select3" value="3" checked={this.state.radio === 'c'} onChange={() => this.setState({radio: 'c', category:'24'})}/> Entertainment
                                     </ListItem>
                                     <ListItem>
-                                        <Switch/> Game
+                                        <Switch name="s4" id="select4" value="4" checked={this.state.radio === 'd'} onChange={() => this.setState({radio: 'd', category:'25'})}/> News
                                     </ListItem>
                                     <ListItem>
-                                        <Switch/> TED
+                                        <Switch name="s5" id="select5" value="5" checked={this.state.radio === 'e'} onChange={() => this.setState({radio: 'e', category:'28'})}/> Science & Technology
                                     </ListItem>
                                     <ListItem>
-                                        <Switch onChange={() => this.OnClickChange()}/> Keyword
+                                        <Switch name="s6" id="select6" value="6" checked={this.state.radio === 'f'} onChange={() => this.OnClickChange()}/> Keyword
                                     </ListItem>
 
 

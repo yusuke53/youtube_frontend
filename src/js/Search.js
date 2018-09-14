@@ -145,6 +145,7 @@ class Search extends React.Component {
                             </div>
                         </form>
                         <h4>閲覧履歴</h4>
+
                     </div>
                 </div>
             </div>
